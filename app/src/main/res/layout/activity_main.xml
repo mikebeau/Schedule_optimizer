@@ -46,5 +46,26 @@
         android:fadingEdge="horizontal|vertical"
         android:text="Saved Schedules" />
 
+    <Button
+    android:id="@+id/launchBtn"
+    android:layout_width="250dp"
+    android:layout_height="100dp"
+    android:layout_below="@id/openSavedSchedule"
+    android:layout_centerHorizontal="true"
+    android:layout_marginStart="0dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginEnd="0dp"
+    android:layout_marginBottom="0dp"
+    android:fadingEdge="horizontal|vertical"
+    android:text="Launch test" />
 
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Result ..."
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/openSavedSchedule"
+        android:textSize="17sp"/>
 </RelativeLayout>
