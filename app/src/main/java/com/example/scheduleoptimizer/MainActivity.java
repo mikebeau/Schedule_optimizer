@@ -16,12 +16,15 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button openInfo;
     private Button openSavedSchedule;
-    private Button launchBtn;
-    private TextView result;
+
 
 
 
@@ -29,14 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        result = (TextView) findViewById(R.id.result);
-        launchBtn = (Button) findViewById(R.id.launchBtn);
-        launchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getWebsite();
-            }
-        });
+
 
         openSavedSchedule = (Button) findViewById(R.id.openSavedSchedule);
         openSavedSchedule.setOnClickListener(new View.OnClickListener(){
@@ -64,38 +60,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void getWebsite(){
 
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final StringBuilder builder = new StringBuilder();
-                try {
-                    Document doc = Jsoup.connect("https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575419340?ModuleName=univschr.pl&SearchOptionDesc=Class+Number&SearchOptionCd=S&KeySem=20203&ViewSem=Fall+2019&College=ENG&Dept=EK&Course=381&Section=").get();
-
-                    String title = doc.title();
-                    Elements links = doc.select("a[href]");
-
-                    builder.append(title).append("\n");
-
-                    for (Element link : links){
-                        builder.append("\n").append("Link: ").append(link.attr("href"))
-                                .append("\n").append("Text: ").append(link.text());
-                    }
-                } catch (IOException e) {
-                    builder.append("Error: ").append(e.getMessage()).append("\n");
-                }
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        result.setText(builder.toString());
-                    }
-                });
-            }
-        }).start();
-
-
-    }
 }

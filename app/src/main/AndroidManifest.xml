@@ -14,9 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SelectedClasses"
+            android:label="@string/title_activity_selected_classes"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".SavedSchedules"
             android:label="@string/title_activity_saved_schedules"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Information" />
         <activity android:name=".MainActivity">
             <intent-filter>
