@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -23,13 +24,19 @@ public class SelectedClasses extends AppCompatActivity {
 
     private TextView classlist;
     private Button test;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_classes);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        progressBar = findViewById(R.id.progressBar1);
+        progressBar.setVisibility((View.INVISIBLE));
 
         // Class List definition and manipulation
         classlist = (TextView) findViewById(R.id.classlist);
@@ -38,6 +45,7 @@ public class SelectedClasses extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
                 displayClassList();
             }
         });
