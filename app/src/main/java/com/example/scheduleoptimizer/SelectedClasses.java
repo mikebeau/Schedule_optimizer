@@ -57,6 +57,8 @@ public class SelectedClasses extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                String delims = "[*|]+";
+                final String[] allCourses;
                 final StringBuilder builder = new StringBuilder();
                 String urls[] ={"https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575419340?ModuleName=univschr.pl&SearchOptionDesc=Class+Number&SearchOptionCd=S&KeySem=20203&ViewSem=Fall+2019&College=ENG&Dept=EK&Course=381&Section=",
                 "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575734487?College=ENG&Dept=BE&Course=437&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
@@ -81,30 +83,124 @@ public class SelectedClasses extends AppCompatActivity {
 
                 for(String url : urls) {
                     try {
+                        // connect to the url
                         Document doc = Jsoup.connect(url).get();
 
-                        String title = doc.title();
-                        Elements links = doc.select("a[href]");
+                        // select all the classes
                         Elements classParams = doc.select(" table:eq(4) > tbody > tr > td:nth-child(n) > font");
 
-                        //builder.append(title).append("\n");
                         int numOfClassAttributes = 13;
                         int loopVar = -1;
                         for (Element link : classParams) {
                             builder.append(link.text()).append(" | ");
                             loopVar = loopVar + 1;
                             if (loopVar % numOfClassAttributes == 0) {
-                                builder.append("\n\n");
+                                builder.append("\n\n*");
                             }
                         }
                     } catch (IOException e) {
                         builder.append("Error: ").append(e.getMessage()).append("\n");
                     }
+
                 }
+                //set turn this string builder into an array of courses
+                allCourses = (builder.toString()).split(delims);
+                int a = allCourses.length/13;
+                final String[] departments = new String[a];
+                final String[] courseNumber = new String [a];
+                final String[] colleges = new String[a];
+                final String[] section = new String[a];
+                final String[] title = new String[a];
+                final String[] instructor = new String[a];
+                final String[] types = new String[a];
+                final String[] days = new String[a];
+                final String[] starts = new String[a];
+                final String[] stops = new String[a];
+
+                int iterate = 0;
+                for(int i = 16; i<allCourses.length;i+=14){
+                    departments[iterate] = allCourses[i];
+                    title[iterate] = allCourses[i+1];
+                    types[iterate] = allCourses[i+4];
+                    days[iterate] = allCourses[i+8];
+                    starts[iterate] = allCourses[i+9];
+                    stops[iterate] = allCourses[i+10];
+
+                    if(departments[iterate] != null){
+                        if(departments[iterate].length() > 2){
+                            section[iterate] = (departments[iterate]).substring(departments[iterate].lastIndexOf(" ") - 2).trim();
+                            colleges[iterate] = departments[iterate].substring(0,3).trim();
+                            departments[iterate] = departments[iterate].substring(3,departments[iterate].lastIndexOf(" ") - 2).trim();
+                            courseNumber[iterate] = departments[iterate].substring(3);
+                            departments[iterate] = departments[iterate].substring(0,3);
+                            title[iterate] = title[iterate].substring(0,title[iterate].length() - 1);
+                            instructor[iterate] = title[iterate].substring(title[iterate].lastIndexOf(" "));
+                            title[iterate] = title[iterate].substring(0,title[iterate].length() - instructor[iterate].length());
+                        }
+                        else {
+                            section[iterate] = " ";
+                            departments[iterate] = " ";
+                            courseNumber[iterate] = " ";
+                            colleges[iterate] = " ";
+                            title[iterate] = " ";
+                            instructor[iterate] = " ";
+                        }
+
+                    }
+                    else{
+                        section[iterate] = " ";
+                        departments[iterate] = " ";
+                        courseNumber[iterate] = " ";
+                        colleges[iterate] = " ";
+                        title[iterate] = " ";
+                        instructor[iterate] = " ";
+                    }
+
+                    iterate++;
+                }
+
+
                 runOnUiThread(new Runnable() {
+
                     @Override
                     public void run() {
-                        classlist.setText(builder.toString());
+                        //classlist.setText(builder.toString());
+                        classlist.setText(" ");
+                        for (int i = 0; i < 100; i++) {
+                            classlist.append("College: ");
+                            classlist.append(colleges[i]);
+
+                            classlist.append("Department: ");
+                            classlist.append(departments[i]);
+
+                            classlist.append("Course Number: ");
+                            classlist.append(courseNumber[i]);
+
+                            classlist.append("Section: ");
+                            classlist.append(section[i]);
+
+                            classlist.append(" Title: ");
+                            classlist.append((title[i]));
+
+                            classlist.append(" Instructor: ");
+                            classlist.append((instructor[i]));
+
+                            classlist.append("Types: ");
+                            classlist.append(types[i]);
+
+                            classlist.append("Days: ");
+                            classlist.append(days[i]);
+
+                            classlist.append("Start: ");
+                            classlist.append(starts[i]);
+
+                            classlist.append("Stop: ");
+                            classlist.append(stops[i]);
+
+                            classlist.append("\n\n");
+
+                        }
+
                     }
                 });
             }
