@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/background">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,31 +13,31 @@
         android:text="BUtiful Schedule"
         android:id="@+id/title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/mainImage" />
 
     <Button
         android:id="@+id/openInfo"
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:fadingEdge="horizontal|vertical"
-        android:text="Create Schedule" />
+        android:text="Create Schedule"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:background="@drawable/button_style"
+        android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/openSavedSchedule"
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_below="@id/openInfo"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="0dp"
@@ -44,7 +45,18 @@
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
         android:fadingEdge="horizontal|vertical"
-        android:text="Saved Schedules" />
+        android:text="Saved Schedules"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:background="@drawable/button_style"
+        android:textAllCaps="false"/>
+
+    <ImageView
+        android:id="@+id/mainImage"
+        android:layout_width="match_parent"
+        android:layout_height="258dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/main_image" />
 
 
 </RelativeLayout>

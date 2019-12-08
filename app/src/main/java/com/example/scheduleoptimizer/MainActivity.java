@@ -20,6 +20,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private Button openInfo;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         openSavedSchedule = (Button) findViewById(R.id.openSavedSchedule);
         openSavedSchedule.setOnClickListener(new View.OnClickListener(){

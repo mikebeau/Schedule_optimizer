@@ -50,6 +50,7 @@ public class SelectedClasses extends AppCompatActivity {
             }
         });
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,6 +212,7 @@ public class SelectedClasses extends AppCompatActivity {
 
                     }
                 });
+                progressBar.setVisibility((View.INVISIBLE));
             }
         }).start();
 

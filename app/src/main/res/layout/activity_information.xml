@@ -25,7 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="selected Schedules"/>
+        android:text="selected Schedules"
+        android:background="@drawable/button_style"/>
 
 
 </RelativeLayout>
