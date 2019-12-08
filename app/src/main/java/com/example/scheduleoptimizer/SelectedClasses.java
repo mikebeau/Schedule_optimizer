@@ -21,10 +21,11 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class SelectedClasses extends AppCompatActivity {
-
+    public  int a;
     private TextView classlist;
     private Button test;
     private ProgressBar progressBar;
+    //final String[] allCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,6 @@ public class SelectedClasses extends AppCompatActivity {
         });
     }
     public void displayClassList(){
-
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -113,7 +112,7 @@ public class SelectedClasses extends AppCompatActivity {
                 }
                 //set turn this string builder into an array of courses
                 allCourses = (builder.toString()).split(delims);
-                int a = allCourses.length/13;
+                a = allCourses.length/13;
                 final String[] departments = new String[a];
                 final String[] courseNumber = new String [a];
                 final String[] colleges = new String[a];
@@ -168,12 +167,68 @@ public class SelectedClasses extends AppCompatActivity {
                 }
 
 
+
                 runOnUiThread(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        //classlist.setText(builder.toString());
-                        classlist.setText(" ");
+                                  @Override
+                                  public void run() {
+                                      /*classlist.setText(builder.toString());
+                                      classlist.setText(" ");*/
+                                      /*
+                                      Course C1 = new Course("ENG", "EC", "327");
+                                      Course.Lec c1lec = C1.new Lec();
+                                      String LecProf = "Goyal";
+                                      String LecSec = "A1";
+                                      String LecDay = "MWF";
+                                      String Start = "0";
+                                      String Stop = "1000";
+                                      c1lec.setLec(LecProf, LecSec, LecDay, Start, Stop);
+                                      classlist.setText(C1.display());*/
+                                      Course[] MCL = new Course[a];
+                                      Course.Lec[] MCLlec = new Course.Lec[a];
+                                      Course.Dis[] MCLdis = new Course.Dis[a];
+                                      Course.Lab[] MCLlab = new Course.Lab[a];
+                                      Course.PLab[] MCLplab = new Course.PLab[a];
+                                      for (int i = 0; i < MCL.length; i++) {
+                                          if (colleges[i] == null || departments[i] == null || courseNumber[i] == null ||
+                                                  colleges[i] == " " || departments[i] == " " || courseNumber[i] == " ") {
+                                              MCL[i] = new Course("CGS", "BS", "101");
+                                          } else {
+                                              MCL[i] = new Course(colleges[i], departments[i], courseNumber[i]);
+                                          }
+                                          /*
+                                          int leccount = 0;
+                                          int discount = 0;
+                                          int labcount = 0;
+                                          int plabcount = 0;
+
+                                          if (types[i] == "Lecture") {
+                                              MCLlec[leccount] = MCL[i].new Lec(instructor[i], section[i], days[i], starts[i], stops[i]);
+                                              leccount++;
+                                          } else if (types[i] == "Discussion") {
+                                              MCLdis[discount] = MCL[i].new Dis(section[i], days[i], starts[i], stops[i]);
+                                              discount++;
+                                          } else if (types[i] == "Lab") {
+                                              MCLlab[labcount] = MCL[i].new Lab(section[i], days[i], starts[i], stops[i]);
+                                              labcount++;
+                                          } else if (types[i] == "Independent" || types[i] == "Directed Study") {
+                                              MCLplab[plabcount] = MCL[i].new PLab(section[i], days[i], starts[i], stops[i]);
+                                              plabcount++;
+                                          } else if (types[i] == null) {
+                                              continue;
+                                          }
+                                          */
+
+                                      }
+                                      classlist.setText(" ");
+                                      for(int j = 0; j<MCL.length;j++) {
+                                          classlist.append(MCL[j].display());
+                                      }
+                                  }
+                              });
+
+                /*
+                //
                         for (int i = 0; i < 100; i++) {
                             classlist.append("College: ");
                             classlist.append(colleges[i]);
@@ -208,13 +263,61 @@ public class SelectedClasses extends AppCompatActivity {
                             classlist.append("\n\n");
 
                         }
+                /*
+                Course[] MCL = new Course[allCourses.length/13];
+                Course.Lec[] MCLlec = new Course.Lec[a];
+                Course.Dis[] MCLdis = new Course.Dis[a];
+                Course.Lab[] MCLlab = new Course.Lab[a];
+                Course.PLab[] MCLplab = new Course.PLab[a];
 
+                for(int i = 0; i < 2;i++)
+                {MCL[i].setCourse("CGS","BS","101");
+                    if(colleges[i]==null||departments[i]==null||courseNumber[i]==null||
+                            colleges[i]==" "||departments[i]==" "||courseNumber[i]==" ")
+                    {MCL[i].setCourse("CGS","BS","101");}
+                    else
+                    {MCL[i].setCourse(colleges[i],departments[i],courseNumber[i]);}
+
+
+                    int leccount = 0;
+                    int discount = 0;
+                    int labcount = 0;
+                    int plabcount = 0;
+                    if(types[i]=="Lecture"){
+                        MCLlec[leccount]= MCL[i].new Lec();
+                        MCLlec[leccount].setLec(instructor[i],section[i],days[i],starts[i],stops[i]);
+                        leccount++;
                     }
-                });
+
+                    else if(types[i]=="Discussion"){
+                        MCLdis[discount]= MCL[i].new Dis();
+                        MCLdis[discount].setDis(section[i],days[i],starts[i],stops[i]);
+                        discount++;
+                    }
+
+                    else if(types[i]=="Lab"){
+                        MCLlab[labcount]= MCL[i].new Lab();
+                        MCLlab[labcount].setLab(section[i],days[i],starts[i],stops[i]);
+                        labcount++;
+                    }
+
+                    else if(types[i]=="Independent"||types[i]=="Directed Study"){
+                        MCLplab[plabcount]= MCL[i].new PLab();
+                        MCLplab[plabcount].setPLab(section[i],days[i],starts[i],stops[i]);
+                        plabcount++;
+                    }
+                    else if(types[i]==null){
+                        continue;
+                    }
+                     */
+                //}
+                //classlist.setText(MCL[1].display(MCL[1]));
+                //for(int j = 0;j<MCL.length;j++){
+                  //  classlist.append(MCL[j].display(MCL[j]));
+                //}
+
                 progressBar.setVisibility((View.INVISIBLE));
             }
         }).start();
-
-
     }
 }
