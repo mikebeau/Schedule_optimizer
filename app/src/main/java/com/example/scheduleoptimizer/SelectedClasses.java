@@ -19,6 +19,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class SelectedClasses extends AppCompatActivity {
     public  int a;
@@ -184,51 +186,138 @@ public class SelectedClasses extends AppCompatActivity {
                                       String Stop = "1000";
                                       c1lec.setLec(LecProf, LecSec, LecDay, Start, Stop);
                                       classlist.setText(C1.display());*/
-                                      Course[] MCL = new Course[a];
-                                      Course.Lec[] MCLlec = new Course.Lec[a];
-                                      Course.Dis[] MCLdis = new Course.Dis[a];
-                                      Course.Lab[] MCLlab = new Course.Lab[a];
-                                      Course.PLab[] MCLplab = new Course.PLab[a];
-                                      for (int i = 0; i < MCL.length; i++) {
+                                      Course[] MCL = new Course[200];
+                                      Course teste = new Course("CGS", "BS", "101");
+                                      //Course.Lec templec = MCL[0].new Lec("Dill","Z1","all ending with y","0","2359");
+                                      ArrayList<String> LecProf = new ArrayList<String>();
+                                      ArrayList<String> LecSec = new ArrayList<String>();
+                                      ArrayList<String> LecDay = new ArrayList<String>();
+                                      ArrayList<String> LecStart = new ArrayList<String>();
+                                      ArrayList<String> LecStop = new ArrayList<String>();
+                                      ArrayList<String> testlist = new ArrayList<String>();
+                                      testlist.add("1");
+                                      testlist.add("2");
+                                      testlist.add("3");
+
+                                      //MCLlec[0]=templec;
+                                      ArrayList<Course.Lec> MCLlec = new ArrayList<Course.Lec>();
+                                      ArrayList<Course.Lec> test = new ArrayList<Course.Lec>();
+                                      test.add(teste.new Lec(testlist,testlist,testlist,testlist,testlist));
+                                      //Course.Dis[] MCLdis = new Course.Dis[196];
+                                      //Course.Lab[] MCLlab = new Course.Lab[196];
+                                      // Course.PLab[] MCLplab = new Course.PLab[196];
+                                      classlist.setText("In the beginning" + "\n");
+                                      classlist.append(test.get(0).getLec());
+                                      testlist.clear();
+                                      testlist.add("4");
+                                      testlist.add("5");
+                                      testlist.add("6");
+                                      test.add(teste.new Lec(testlist,testlist,testlist,testlist,testlist));
+                                      classlist.append(test.get(0).getLec());
+
+                                      int k = 0;
+                                      for (int i = 2; i < 420; i++) {
+                                          String s1 = courseNumber[i];
+                                          String s2 = courseNumber[(i + 1)];
+                                          if (types[i].contains("Lecture")) {
+                                              LecProf.add(instructor[i]);
+                                              LecSec.add(section[i]);
+                                              LecDay.add(days[i]);
+                                              LecStart.add(starts[i]);
+                                              LecStop.add(stops[i]);
+                                          }
+                                          classlist.append(String.valueOf(LecProf.size()));
                                           if (colleges[i] == null || departments[i] == null || courseNumber[i] == null ||
                                                   colleges[i] == " " || departments[i] == " " || courseNumber[i] == " ") {
-                                              MCL[i] = new Course("CGS", "BS", "101");
-                                          } else {
-                                              MCL[i] = new Course(colleges[i], departments[i], courseNumber[i]);
-                                          }
-                                          /*
-                                          int leccount = 0;
-                                          int discount = 0;
-                                          int labcount = 0;
-                                          int plabcount = 0;
+                                              MCL[k] = new Course("CGS", "BS", "101");
+                                              MCLlec.add(MCL[k].new Lec(LecProf, LecSec, LecDay, LecStart, LecStop));
+                                              LecProf.clear();
+                                              LecSec.clear();
+                                              LecDay.clear();
+                                              LecStart.clear();
+                                              LecStop.clear();
+                                              classlist.append(String.valueOf(LecProf.size()));
+                                              k++;
+                                          } else if (!s1.contains(s2)) {
+                                              MCL[k] = new Course(colleges[i], departments[i], courseNumber[i]);
+                                              MCLlec.add(MCL[k].new Lec(LecProf, LecSec, LecDay, LecStart, LecStop));
+                                              //classlist.append(MCLlec.get(k).toString());
+                                              /*
+                                              for (int b = 0; b < LecProf.size(); b++) {
+                                                  classlist.append(LecProf.get(b) + " ");
+                                                  classlist.append(LecSec.get(b) + " ");
+                                                  classlist.append(LecDay.get(b) + " ");
+                                                  classlist.append(LecStart.get(b) + " ");
+                                                  classlist.append(LecStop.get(b) + "\n");
+                                              }*/
+                                                  LecProf.clear();
+                                                  LecSec.clear();
+                                                  LecDay.clear();
+                                                  LecStart.clear();
+                                                  LecStop.clear();
+                                              classlist.append(String.valueOf(LecProf.size()));
 
-                                          if (types[i] == "Lecture") {
-                                              MCLlec[leccount] = MCL[i].new Lec(instructor[i], section[i], days[i], starts[i], stops[i]);
-                                              leccount++;
+                                              k++;
+                                          }
+
+
+                                          /*if (types[i].contains("Lecture")) {
+                                              LecProf.add(instructor[i]);
+                                              LecSec.add(section[i]);
+                                              LecDay.add(days[i]);
+                                              LecStart.add(starts[i]);
+                                              LecStop.add(stops[i]);
                                           } else if (types[i] == "Discussion") {
-                                              MCLdis[discount] = MCL[i].new Dis(section[i], days[i], starts[i], stops[i]);
+                                              Course.Dis templec = MCL[i].new Dis(section[i], days[i], starts[i], stops[i]);
+                                              MCLdis[discount] = templec;
                                               discount++;
                                           } else if (types[i] == "Lab") {
-                                              MCLlab[labcount] = MCL[i].new Lab(section[i], days[i], starts[i], stops[i]);
-                                              labcount++;
+                                              Course.Lab templec = MCL[i].new Lab(section[i], days[i], starts[i], stops[i]);
+                                              MCLlab[labcount] = templec;
+                                              discount++;
                                           } else if (types[i] == "Independent" || types[i] == "Directed Study") {
-                                              MCLplab[plabcount] = MCL[i].new PLab(section[i], days[i], starts[i], stops[i]);
-                                              plabcount++;
+                                              Course.PLab templec = MCL[i].new PLab(section[i], days[i], starts[i], stops[i]);
+                                              MCLplab[plabcount] = templec;
+                                              discount++;
                                           } else if (types[i] == null) {
                                               continue;
-                                          }
-                                          */
+                                          }*/
+
 
                                       }
-                                      classlist.setText(" ");
-                                      for(int j = 0; j<MCL.length;j++) {
+
+                                      //String s1 = courseNumber[1];
+                                      //String s2 = courseNumber[2];
+                                      classlist.append(String.valueOf(MCLlec.size()) + "\n");
+                                      //classlist.append(courseNumber[2]);
+                                      //classlist.append(courseNumber[3]);
+                                      for (int j = 0; j < k; j++) {
+                                          //classlist.append(String.valueOf(k));//MCL[j].display());
+
+                                          //if (!s1.contains(s2)) {
+                                          //  MCL[0] = new Course(colleges[1], departments[1], courseNumber[1]);
                                           classlist.append(MCL[j].display());
+                                          //classlist.append(MCLlec.get(j).getLec());
+                                          //classlist.append(courseNumber[0]);
+                                          //classlist.append(courseNumber[1]);
+                                          //classlist.append(courseNumber[2]);
+                                          //classlist.append(courseNumber[3]);
+                                          //classlist.append("\n");
+                                          //} else
+                                          //  classlist.append(" equal");//*/
+
+                                          //classlist.append((Integer.valueOf(courseNumber[2])).toString());
+                                          //classlist.append((Integer.valueOf(courseNumber[3])).toString());
+                                          //classlist.append(MCL[j].getLec());
+                                          //classlist.append(MCLdis[j].getDis());
+                                          //classlist.append(MCLlab[j].getLab());
+                                          //classlist.append(MCLplab[j].getPLab());
                                       }
                                   }
                               });
 
+
                 /*
-                //
                         for (int i = 0; i < 100; i++) {
                             classlist.append("College: ");
                             classlist.append(colleges[i]);
@@ -262,59 +351,7 @@ public class SelectedClasses extends AppCompatActivity {
 
                             classlist.append("\n\n");
 
-                        }
-                /*
-                Course[] MCL = new Course[allCourses.length/13];
-                Course.Lec[] MCLlec = new Course.Lec[a];
-                Course.Dis[] MCLdis = new Course.Dis[a];
-                Course.Lab[] MCLlab = new Course.Lab[a];
-                Course.PLab[] MCLplab = new Course.PLab[a];
-
-                for(int i = 0; i < 2;i++)
-                {MCL[i].setCourse("CGS","BS","101");
-                    if(colleges[i]==null||departments[i]==null||courseNumber[i]==null||
-                            colleges[i]==" "||departments[i]==" "||courseNumber[i]==" ")
-                    {MCL[i].setCourse("CGS","BS","101");}
-                    else
-                    {MCL[i].setCourse(colleges[i],departments[i],courseNumber[i]);}
-
-
-                    int leccount = 0;
-                    int discount = 0;
-                    int labcount = 0;
-                    int plabcount = 0;
-                    if(types[i]=="Lecture"){
-                        MCLlec[leccount]= MCL[i].new Lec();
-                        MCLlec[leccount].setLec(instructor[i],section[i],days[i],starts[i],stops[i]);
-                        leccount++;
-                    }
-
-                    else if(types[i]=="Discussion"){
-                        MCLdis[discount]= MCL[i].new Dis();
-                        MCLdis[discount].setDis(section[i],days[i],starts[i],stops[i]);
-                        discount++;
-                    }
-
-                    else if(types[i]=="Lab"){
-                        MCLlab[labcount]= MCL[i].new Lab();
-                        MCLlab[labcount].setLab(section[i],days[i],starts[i],stops[i]);
-                        labcount++;
-                    }
-
-                    else if(types[i]=="Independent"||types[i]=="Directed Study"){
-                        MCLplab[plabcount]= MCL[i].new PLab();
-                        MCLplab[plabcount].setPLab(section[i],days[i],starts[i],stops[i]);
-                        plabcount++;
-                    }
-                    else if(types[i]==null){
-                        continue;
-                    }
-                     */
-                //}
-                //classlist.setText(MCL[1].display(MCL[1]));
-                //for(int j = 0;j<MCL.length;j++){
-                  //  classlist.append(MCL[j].display(MCL[j]));
-                //}
+                        }*/
 
                 progressBar.setVisibility((View.INVISIBLE));
             }
