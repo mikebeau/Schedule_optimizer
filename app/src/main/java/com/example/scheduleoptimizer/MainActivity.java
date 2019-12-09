@@ -14,12 +14,6 @@ import org.jsoup.select.Elements;
 import org.w3c.dom.Text;
 import org.jsoup.nodes.Document;
 
-import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        openSavedSchedule = (Button) findViewById(R.id.openSavedSchedule);
+        openSavedSchedule = findViewById(R.id.openSavedSchedule);
         openSavedSchedule.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
