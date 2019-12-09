@@ -97,7 +97,12 @@
     <string name="college">College</string>
     <string name="department">Department</string>
     <string name="hints">Spring2020</string>
-    <string name="course">Course number</string>
+    <string name="course">Course code</string>
+    <string name="course1">Course 1:</string>
+    <string name="course2">Course 2:</string>
+    <string name="course3">Course 3:</string>
+    <string name="course4">Course 4:</string>
+    <string name="course5">Course 5:</string>
     <string name="section">Section number</string>
     <string name="start">Start time</string>
     <string name="stop">Stop time</string>
