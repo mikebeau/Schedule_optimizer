@@ -1,13 +1,12 @@
 package com.example.scheduleoptimizer;
 
-
 import java.util.ArrayList;
 
 public class Course {
 
-        String College;
-        String Dept;
-        String coursenum;
+        public String College;
+        public String Dept;
+        public String coursenum;
 
         public Course(String col, String dpt, String num) {
             this.College = col;
@@ -15,7 +14,7 @@ public class Course {
             this.coursenum = num;
         }
 
-        class Lec {
+        public  class Lec {
             ArrayList<String> Prof;
             ArrayList<String> Sec;
             ArrayList<String> Day;
@@ -23,11 +22,11 @@ public class Course {
             ArrayList<String> Stop;
 
             public Lec(ArrayList<String> prof, ArrayList<String> sec, ArrayList<String> day, ArrayList<String> start, ArrayList<String> stop) {
-                Prof = prof;
-                Sec = sec;
-                Day = day;
-                Start = start;
-                Stop = stop;
+                this.Prof = prof;
+                this.Sec = sec;
+                this.Day = day;
+                this.Start = start;
+                this.Stop = stop;
             }
             public String getLec(){
                 String returnstring ="";
@@ -39,64 +38,68 @@ public class Course {
             }
         }
 
-        class Dis {
-            String Sec;
-            String Day;
-            String Start;
-            String Stop;
+        public class Dis {
+            ArrayList<String> Sec;
+            ArrayList<String> Day;
+            ArrayList<String> Start;
+            ArrayList<String> Stop;
 
-            public Dis(String sec, String day, String start, String stop) {
-                Sec = sec;
-                Day = day;
-                Start = start;
-                Stop = stop;
+            public Dis(ArrayList<String> sec, ArrayList<String> day, ArrayList<String> start, ArrayList<String> stop) {
+                this.Sec = sec;
+                this.Day = day;
+                this.Start = start;
+                this.Stop = stop;
             }
             public String getDis(){
-                String returnstring =" ";
-                if(Sec == null || Day == null||Start == null|| Stop == null)
-                    return returnstring;
-                returnstring = returnstring+ "Discussion Section: "+Sec
-                        + ", " + Day+" from " + Start + " to " + Stop+ "\n";
+                String returnstring ="";
+                for (int i=0;i<Sec.size();i++) {
+                    returnstring = returnstring + " Discussion Section: " + Sec.get(i)
+                            + ", " + Day.get(i) + " from " + Start.get(i) + " to " + Stop.get(i) + "\n";
+                }
                 return  returnstring;
             }
         }
 
-        class Lab {
-            String Sec;
-            String Day;
-            String Start;
-            String Stop;
+        public class Lab {
+            ArrayList<String> Sec;
+            ArrayList<String> Day;
+            ArrayList<String> Start;
+            ArrayList<String> Stop;
 
-            public Lab(String sec, String day, String start, String stop) {
-                Sec = sec;
-                Day = day;
-                Start = start;
-                Stop = stop;
+            public Lab(ArrayList<String> sec, ArrayList<String> day, ArrayList<String> start, ArrayList<String> stop) {
+                this.Sec = sec;
+                this.Day = day;
+                this.Start = start;
+                this.Stop = stop;
             }
             public String getLab(){
-                String returnstring =" ";
-                    returnstring = returnstring + display()+ "Discussion Section: "+Sec
-                            + ", " + Day+" from " + Start + " to " + Stop+ "\n";
+                String returnstring ="";
+                for (int i=0;i<Sec.size();i++) {
+                    returnstring = returnstring + " Lab Section: " + Sec.get(i)
+                            + ", " + Day.get(i) + " from " + Start.get(i) + " to " + Stop.get(i) + "\n";
+                }
                 return  returnstring;
             }
         }
 
-        class PLab {
-            String Sec;
-            String Day;
-            String Start;
-            String Stop;
+        public class PLab {
+            ArrayList<String> Sec;
+            ArrayList<String> Day;
+            ArrayList<String> Start;
+            ArrayList<String> Stop;
 
-            public PLab(String sec, String day, String start, String stop) {
+            public PLab(ArrayList<String> sec, ArrayList<String> day, ArrayList<String> start, ArrayList<String> stop) {
                 Sec = sec;
                 Day = day;
                 Start = start;
                 Stop = stop;
             }
             public String getPLab(){
-                String returnstring =" ";
-                returnstring = returnstring+ "Discussion Section: "+Sec
-                        + ", " + Day+" from " + Start + " to " + Stop+ "\n";
+                String returnstring ="";
+                for (int i=0;i<Sec.size();i++) {
+                    returnstring = returnstring + " Independent Section: " + Sec.get(i)
+                            + ", " + Day.get(i) + " from " + Start.get(i) + " to " + Stop.get(i) + "\n";
+                }
                 return  returnstring;
             }
         }

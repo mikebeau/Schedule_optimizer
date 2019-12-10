@@ -1,5 +1,6 @@
 package com.example.scheduleoptimizer;
 
+import android.graphics.CornerPathEffect;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -71,24 +72,24 @@ public class SelectedClasses extends AppCompatActivity {
                 final String[] allCourses;
                 final StringBuilder builder = new StringBuilder();
                 String urls[] ={"https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575734487?College=ENG&Dept=BE&Course=437&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739455?College=ENG&Dept=EC&Course=311&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739464?College=ENG&Dept=EC&Course=410&Section=B1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739498?College=ENG&Dept=EC&Course=464&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739625?College=ENG&Dept=EC&Course=467&Section=S6&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739666?College=ENG&Dept=EC&Course=535&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739773?College=ENG&Dept=EK&Course=&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739787?College=ENG&Dept=EK&Course=125&Section=B7&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739810?College=ENG&Dept=EK&Course=210&Section=A5&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739828?College=ENG&Dept=EK&Course=307&Section=C5&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739870?College=ENG&Dept=EK&Course=424&Section=B3&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739883?College=ENG&Dept=ME&Course=305&Section=B2&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739900?College=ENG&Dept=ME&Course=306&Section=C8&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739913?College=ENG&Dept=ME&Course=358&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739913?College=ENG&Dept=ME&Course=358&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739927?College=ENG&Dept=ME&Course=461&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575740162?College=ENG&Dept=ME&Course=528&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575740194?College=ENG&Dept=MS&Course=&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575740239?College=ENG&Dept=SE&Course=&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd="} ;
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739455?College=ENG&Dept=EC&Course=311&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739464?College=ENG&Dept=EC&Course=410&Section=B1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739498?College=ENG&Dept=EC&Course=464&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739625?College=ENG&Dept=EC&Course=467&Section=S6&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739666?College=ENG&Dept=EC&Course=535&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739773?College=ENG&Dept=EK&Course=&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739787?College=ENG&Dept=EK&Course=125&Section=B7&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739810?College=ENG&Dept=EK&Course=210&Section=A5&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739828?College=ENG&Dept=EK&Course=307&Section=C5&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739870?College=ENG&Dept=EK&Course=424&Section=B3&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739883?College=ENG&Dept=ME&Course=305&Section=B2&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739900?College=ENG&Dept=ME&Course=306&Section=C8&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739913?College=ENG&Dept=ME&Course=358&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739913?College=ENG&Dept=ME&Course=358&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575739927?College=ENG&Dept=ME&Course=461&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575740162?College=ENG&Dept=ME&Course=528&Section=A1&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575740194?College=ENG&Dept=MS&Course=&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd=",
+                        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1575740239?College=ENG&Dept=SE&Course=&Section=&ModuleName=univschr.pl&KeySem=20204&ViewSem=Spring+2020&SearchOptionCd=S&SearchOptionDesc=Class+Number&MainCampusInd="} ;
 
                 for(String url : urls) {
                     try {
@@ -172,149 +173,152 @@ public class SelectedClasses extends AppCompatActivity {
 
                 runOnUiThread(new Runnable() {
 
-                                  @Override
-                                  public void run() {
-                                      /*classlist.setText(builder.toString());
-                                      classlist.setText(" ");*/
-                                      /*
-                                      Course C1 = new Course("ENG", "EC", "327");
-                                      Course.Lec c1lec = C1.new Lec();
-                                      String LecProf = "Goyal";
-                                      String LecSec = "A1";
-                                      String LecDay = "MWF";
-                                      String Start = "0";
-                                      String Stop = "1000";
-                                      c1lec.setLec(LecProf, LecSec, LecDay, Start, Stop);
-                                      classlist.setText(C1.display());*/
-                                      Course[] MCL = new Course[200];
-                                      Course teste = new Course("CGS", "BS", "101");
-                                      //Course.Lec templec = MCL[0].new Lec("Dill","Z1","all ending with y","0","2359");
-                                      ArrayList<String> LecProf = new ArrayList<String>();
-                                      ArrayList<String> LecSec = new ArrayList<String>();
-                                      ArrayList<String> LecDay = new ArrayList<String>();
-                                      ArrayList<String> LecStart = new ArrayList<String>();
-                                      ArrayList<String> LecStop = new ArrayList<String>();
-                                      ArrayList<String> testlist = new ArrayList<String>();
-                                      testlist.add("1");
-                                      testlist.add("2");
-                                      testlist.add("3");
+                    @Override
+                    public void run() {
+                        Course[] MCL = new Course[200];
 
-                                      //MCLlec[0]=templec;
-                                      ArrayList<Course.Lec> MCLlec = new ArrayList<Course.Lec>();
-                                      ArrayList<Course.Lec> test = new ArrayList<Course.Lec>();
-                                      test.add(teste.new Lec(testlist,testlist,testlist,testlist,testlist));
-                                      //Course.Dis[] MCLdis = new Course.Dis[196];
-                                      //Course.Lab[] MCLlab = new Course.Lab[196];
-                                      // Course.PLab[] MCLplab = new Course.PLab[196];
-                                      classlist.setText("In the beginning" + "\n");
-                                      classlist.append(test.get(0).getLec());
-                                      testlist.clear();
-                                      testlist.add("4");
-                                      testlist.add("5");
-                                      testlist.add("6");
-                                      test.add(teste.new Lec(testlist,testlist,testlist,testlist,testlist));
-                                      classlist.append(test.get(0).getLec());
+                        ArrayList<String> LecProf = new ArrayList<String>();
+                        ArrayList<String> LecSec = new ArrayList<String>();
+                        ArrayList<String> LecDay = new ArrayList<String>();
+                        ArrayList<String> LecStart = new ArrayList<String>();
+                        ArrayList<String> LecStop = new ArrayList<String>();
 
-                                      int k = 0;
-                                      for (int i = 2; i < 420; i++) {
-                                          String s1 = courseNumber[i];
-                                          String s2 = courseNumber[(i + 1)];
-                                          if (types[i].contains("Lecture")) {
-                                              LecProf.add(instructor[i]);
-                                              LecSec.add(section[i]);
-                                              LecDay.add(days[i]);
-                                              LecStart.add(starts[i]);
-                                              LecStop.add(stops[i]);
-                                          }
-                                          classlist.append(String.valueOf(LecProf.size()));
-                                          if (colleges[i] == null || departments[i] == null || courseNumber[i] == null ||
-                                                  colleges[i] == " " || departments[i] == " " || courseNumber[i] == " ") {
-                                              MCL[k] = new Course("CGS", "BS", "101");
-                                              MCLlec.add(MCL[k].new Lec(LecProf, LecSec, LecDay, LecStart, LecStop));
-                                              LecProf.clear();
-                                              LecSec.clear();
-                                              LecDay.clear();
-                                              LecStart.clear();
-                                              LecStop.clear();
-                                              classlist.append(String.valueOf(LecProf.size()));
-                                              k++;
-                                          } else if (!s1.contains(s2)) {
-                                              MCL[k] = new Course(colleges[i], departments[i], courseNumber[i]);
-                                              MCLlec.add(MCL[k].new Lec(LecProf, LecSec, LecDay, LecStart, LecStop));
-                                              //classlist.append(MCLlec.get(k).toString());
-                                              /*
-                                              for (int b = 0; b < LecProf.size(); b++) {
-                                                  classlist.append(LecProf.get(b) + " ");
-                                                  classlist.append(LecSec.get(b) + " ");
-                                                  classlist.append(LecDay.get(b) + " ");
-                                                  classlist.append(LecStart.get(b) + " ");
-                                                  classlist.append(LecStop.get(b) + "\n");
-                                              }*/
-                                                  LecProf.clear();
-                                                  LecSec.clear();
-                                                  LecDay.clear();
-                                                  LecStart.clear();
-                                                  LecStop.clear();
-                                              classlist.append(String.valueOf(LecProf.size()));
+                        ArrayList<String> DisSec = new ArrayList<String>();
+                        ArrayList<String> DisDay = new ArrayList<String>();
+                        ArrayList<String> DisStart = new ArrayList<String>();
+                        ArrayList<String> DisStop = new ArrayList<String>();
 
-                                              k++;
-                                          }
+                        ArrayList<String> LabSec = new ArrayList<String>();
+                        ArrayList<String> LabDay = new ArrayList<String>();
+                        ArrayList<String> LabStart = new ArrayList<String>();
+                        ArrayList<String> LabStop = new ArrayList<String>();
 
+                        ArrayList<String> PLabSec = new ArrayList<String>();
+                        ArrayList<String> PLabDay = new ArrayList<String>();
+                        ArrayList<String> PLabStart = new ArrayList<String>();
+                        ArrayList<String> PLabStop = new ArrayList<String>();
 
-                                          /*if (types[i].contains("Lecture")) {
-                                              LecProf.add(instructor[i]);
-                                              LecSec.add(section[i]);
-                                              LecDay.add(days[i]);
-                                              LecStart.add(starts[i]);
-                                              LecStop.add(stops[i]);
-                                          } else if (types[i] == "Discussion") {
-                                              Course.Dis templec = MCL[i].new Dis(section[i], days[i], starts[i], stops[i]);
-                                              MCLdis[discount] = templec;
-                                              discount++;
-                                          } else if (types[i] == "Lab") {
-                                              Course.Lab templec = MCL[i].new Lab(section[i], days[i], starts[i], stops[i]);
-                                              MCLlab[labcount] = templec;
-                                              discount++;
-                                          } else if (types[i] == "Independent" || types[i] == "Directed Study") {
-                                              Course.PLab templec = MCL[i].new PLab(section[i], days[i], starts[i], stops[i]);
-                                              MCLplab[plabcount] = templec;
-                                              discount++;
-                                          } else if (types[i] == null) {
-                                              continue;
-                                          }*/
+                        ArrayList<Course.Lec> MCLlec = new ArrayList<Course.Lec>();
+                        ArrayList<Course.Dis> MCLdis = new ArrayList<Course.Dis>();
+                        ArrayList<Course.Lab> MCLlab = new ArrayList<Course.Lab>();
+                        ArrayList<Course.PLab> MCLplab = new ArrayList<Course.PLab>();
+
+                        classlist.setText("In the beginning" + "\n");
+
+                        int k = 0;
+                        for (int i = 0; i < 420; i++) {
+                            String s1 = courseNumber[i];
+                            String s2 = courseNumber[(i + 1)];
+                            if (types[i].contains("Lecture")) {
+                                LecProf.add(instructor[i]);
+                                LecSec.add(section[i]);
+                                LecDay.add(days[i]);
+                                LecStart.add(starts[i]);
+                                LecStop.add(stops[i]);
+                            }
+                            else if (types[i].contains("Discussion")) {
+                                DisSec.add(section[i]);
+                                DisDay.add(days[i]);
+                                DisStart.add(starts[i]);
+                                DisStop.add(stops[i]);
+                            }
+                            else if (types[i].contains("Lab")) {
+                                LabSec.add(section[i]);
+                                LabDay.add(days[i]);
+                                LabStart.add(starts[i]);
+                                LabStop.add(stops[i]);
+                            }
+                            else{
+                                PLabSec.add(section[i]);
+                                PLabDay.add(days[i]);
+                                PLabStart.add(starts[i]);
+                                PLabStop.add(stops[i]);
+                            }
+
+                            if (colleges[i] == null || departments[i] == null || courseNumber[i] == null ||
+                                    colleges[i] == " " || departments[i] == " " || courseNumber[i] == " ") {
+                                /*MCL[k] = new Course("CGS", "BS", "101");
+                                MCLlec.add(MCL[k].new Lec(LecProf, LecSec, LecDay, LecStart, LecStop));
+                                MCLdis.add(MCL[k].new Dis(DisSec,DisDay,DisStart,DisStop));
+                                MCLlab.add(MCL[k].new Lab(LabSec,LabDay,LabStart,LabStop));
+                                MCLplab.add(MCL[k].new PLab(PLabSec,PLabDay,PLabStart,PLabStop));
+                                classlist.append(MCL[k].display());
+                                classlist.append(MCLlec.get(k).getLec());
+                                classlist.append(MCLdis.get(k).getDis());
+                                classlist.append(MCLlab.get(k).getLab());
+                                classlist.append(MCLplab.get(k).getPLab());*/
+
+                                LecProf.clear();
+                                LecSec.clear();
+                                LecDay.clear();
+                                LecStart.clear();
+                                LecStop.clear();
+                                DisSec.clear();
+                                DisDay.clear();
+                                DisStart.clear();
+                                DisStop.clear();
+                                LabSec.clear();
+                                LabDay.clear();
+                                LabStart.clear();
+                                LabStop.clear();
+                                PLabSec.clear();
+                                PLabDay.clear();
+                                PLabStart.clear();
+                                PLabStop.clear();
 
 
-                                      }
+                                //k++;
+                            } else if (!s1.contains(s2)) {
+                                MCL[k] = new Course(colleges[i], departments[i], courseNumber[i]);
+                                MCLlec.add(MCL[k].new Lec((ArrayList<String>)LecProf.clone(), (ArrayList<String>)LecSec.clone(), (ArrayList<String>)LecDay.clone(), (ArrayList<String>)LecStart.clone(), (ArrayList<String>)LecStop.clone()));
+                                MCLdis.add(MCL[k].new Dis((ArrayList<String>)DisSec.clone(),(ArrayList<String>)DisDay.clone(),(ArrayList<String>)DisStart.clone(),(ArrayList<String>)DisStop.clone()));
+                                MCLlab.add(MCL[k].new Lab((ArrayList<String>)LabSec.clone(),(ArrayList<String>)LabDay.clone(),(ArrayList<String>)LabStart.clone(),(ArrayList<String>)LabStop.clone()));
+                                MCLplab.add(MCL[k].new PLab((ArrayList<String>)PLabSec.clone(),(ArrayList<String>)PLabDay.clone(),(ArrayList<String>)PLabStart.clone(),(ArrayList<String>)PLabStop.clone()));
+                                /*
+                                classlist.append(MCL[k].display());
+                                classlist.append(MCLlec.get(k).getLec());
+                                classlist.append(MCLdis.get(k).getDis());
+                                classlist.append(MCLlab.get(k).getLab());
+                                classlist.append(MCLplab.get(k).getPLab());*/
 
-                                      //String s1 = courseNumber[1];
-                                      //String s2 = courseNumber[2];
-                                      classlist.append(String.valueOf(MCLlec.size()) + "\n");
-                                      //classlist.append(courseNumber[2]);
-                                      //classlist.append(courseNumber[3]);
-                                      for (int j = 0; j < k; j++) {
-                                          //classlist.append(String.valueOf(k));//MCL[j].display());
+                                LecProf.clear();
+                                LecSec.clear();
+                                LecDay.clear();
+                                LecStart.clear();
+                                LecStop.clear();
+                                DisSec.clear();
+                                DisDay.clear();
+                                DisStart.clear();
+                                DisStop.clear();
+                                LabSec.clear();
+                                LabDay.clear();
+                                LabStart.clear();
+                                LabStop.clear();
+                                PLabSec.clear();
+                                PLabDay.clear();
+                                PLabStart.clear();
+                                PLabStop.clear();
 
-                                          //if (!s1.contains(s2)) {
-                                          //  MCL[0] = new Course(colleges[1], departments[1], courseNumber[1]);
-                                          classlist.append(MCL[j].display());
-                                          //classlist.append(MCLlec.get(j).getLec());
-                                          //classlist.append(courseNumber[0]);
-                                          //classlist.append(courseNumber[1]);
-                                          //classlist.append(courseNumber[2]);
-                                          //classlist.append(courseNumber[3]);
-                                          //classlist.append("\n");
-                                          //} else
-                                          //  classlist.append(" equal");//*/
+/*
+                                classlist.append(MCLlec.get(k).getLec());
+                                classlist.append(MCLdis.get(k).getDis());
+                                classlist.append(MCLlab.get(k).getLab());
+                                classlist.append(MCLplab.get(k).getPLab());*/
+                                k++;
+                            }
+                        }
 
-                                          //classlist.append((Integer.valueOf(courseNumber[2])).toString());
-                                          //classlist.append((Integer.valueOf(courseNumber[3])).toString());
-                                          //classlist.append(MCL[j].getLec());
-                                          //classlist.append(MCLdis[j].getDis());
-                                          //classlist.append(MCLlab[j].getLab());
-                                          //classlist.append(MCLplab[j].getPLab());
-                                      }
-                                  }
-                              });
+                        classlist.append(String.valueOf(MCLlec.size()) + "\n");
+                        classlist.append("CLEARED LIST"+ "\n");
+                        for (int j = 0; j < k; j++) {
+                            classlist.append(MCL[j].display());
+                            classlist.append(MCLlec.get(j).getLec());
+                            classlist.append(MCLdis.get(j).getDis());
+                            classlist.append(MCLlab.get(j).getLab());
+                            classlist.append(MCLplab.get(j).getPLab());
+                        }
+                    }
+                });
 
 
                 /*
