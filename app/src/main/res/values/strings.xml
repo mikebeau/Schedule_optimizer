@@ -103,16 +103,32 @@
     <string name="course3">Course 3:</string>
     <string name="course4">Course 4:</string>
     <string name="course5">Course 5:</string>
+    <string name="buttonI">Input course choices</string>
+    <string name="introductoryRC">Please rank your courses from top to last choice</string>
+    <string name="choice1">Top choice:</string>
+    <string name="choice2">Second choice:</string>
+    <string name="choice3">Third choice:</string>
+    <string name="choice4">Fourth choice:</string>
+    <string name="choice5">Last choice:</string>
+    <string name="buttonRC">Input course rankings</string>
+    <string name="introductoryPMM">Please edit your preferences for each chosen course:</string>
+    <string name="getschedule">Get optimized schedules!</string>
+    <string name="display">Test Display</string>
+    <string name="introductoryCP">Please choose your preferences in the following categories</string>
     <string name="section">Section number</string>
-    <string name="start">Start time</string>
-    <string name="stop">Stop time</string>
+    <string name="times">Start to stop times</string>
     <string name="days">Days of week</string>
     <string name="prof">Professor</string>
     <string name="type">Course type</string>
     <string name="TorP">Which matters more to you?</string>
+    <string name="buttonCP">Input course preferences</string>
     <string-array name="testSpinArray">
         <item>Professor</item>
         <item>Time</item>
     </string-array>
     <string name="noSelection">No selection</string>
+    <string name="title_activity_rank_courses">RankCourses</string>
+    <string name="title_activity_preferences_main_menu">PreferencesMainMenu</string>
+    <string name="title_activity_schedule_display">ScheduleDisplay</string>
+    <string name="title_activity_course1_preferences">Course1Preferences</string>
 </resources>

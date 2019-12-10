@@ -48,7 +48,7 @@ public class Information extends AppCompatActivity {
     }
 
     public void openActivitySelectedClasses(){
-        Intent intent = new Intent(this, SelectedClasses.class);
+        Intent intent = new Intent(this, RankCourses.class);
         startActivity(intent);
     }
 
