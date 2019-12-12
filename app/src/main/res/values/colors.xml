@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#aa0000</color>
     <color name="colorAccent">#2D2926</color>
     <color name="background">#fbfbd0</color>
+    <color name="scheduleHeader">#3dc7f5</color>
+    <color name="scheduleText">#262626</color>
+    <color name="scheduleHighlighted">#f6bcbc</color>
+    <color name="scheduleDivider">#888888</color>
 </resources>
