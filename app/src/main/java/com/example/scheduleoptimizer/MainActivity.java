@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button openInfo;
     private Button openSavedSchedule;
+    private Button testButton;
 
 
 
@@ -27,6 +28,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //code for test button
+        testButton = findViewById(R.id.testButton);
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTestActivity();
+            }
+        });
+
 
         openSavedSchedule = findViewById(R.id.openSavedSchedule);
         openSavedSchedule.setOnClickListener(new View.OnClickListener(){
@@ -51,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivitySavedSchedules(){
         Intent intent = new Intent(this, SavedSchedules.class);
+        startActivity(intent);
+    }
+
+    public void openTestActivity(){
+        Intent intent = new Intent(this, SelectedClasses.class);
         startActivity(intent);
     }
 
