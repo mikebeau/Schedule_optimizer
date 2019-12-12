@@ -7,7 +7,8 @@
     android:clipToPadding="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ScheduleDisplay"
-    tools:showIn="@layout/activity_schedule_display">
+    tools:showIn="@layout/activity_schedule_display"
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/textView"

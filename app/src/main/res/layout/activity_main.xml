@@ -13,9 +13,12 @@
         android:text="BUtiful Schedule"
         android:id="@+id/title"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        android:textSize="45sp"
         android:layout_marginTop="0dp"
-        android:layout_below="@id/mainImage" />
+        android:layout_below="@id/mainImage"
+        android:fontFamily="@font/alegreya_family"
+        android:textStyle="bold"
+        android:textColor="#f53d3d"/>
 
     <Button
         android:id="@+id/openInfo"

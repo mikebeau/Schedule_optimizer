@@ -336,7 +336,7 @@ public class SelectedClasses extends AppCompatActivity {
                             classlist.append(section[i]);
 
                             classlist.append(" Title: ");
-                            classlist.append((title[i]));
+                            classlist.append((alegreya_family[i]));
 
                             classlist.append(" Instructor: ");
                             classlist.append((instructor[i]));

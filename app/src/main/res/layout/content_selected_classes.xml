@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".SelectedClasses"
-    tools:showIn="@layout/activity_selected_classes">
+    tools:showIn="@layout/activity_selected_classes"
+    android:background="@color/background">
 
 
 

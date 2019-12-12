@@ -7,7 +7,8 @@
     android:clipToPadding="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".PreferencesMainMenu"
-    tools:showIn="@layout/activity_preferences_main_menu">
+    tools:showIn="@layout/activity_preferences_main_menu"
+    android:background="@color/background">
 
 
     <TextView
@@ -80,8 +81,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/button_style"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonC5"
-        android:text="@string/getschedule" />
+        android:text="@string/getschedule"
+        android:textSize="25dp"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/alegreya_family"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
