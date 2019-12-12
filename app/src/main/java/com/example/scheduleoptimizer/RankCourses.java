@@ -55,24 +55,13 @@ public class RankCourses extends AppCompatActivity {
         //Spinner click listeners
         AdapterView.OnItemSelectedListener listener = topChoice.getOnItemSelectedListener();
         topChoice.setOnItemSelectedListener(listener);
-        AdapterView.OnItemSelectedListener listener2=Choice2.getOnItemSelectedListener();
-        Choice2.setOnItemSelectedListener(listener2);
-        AdapterView.OnItemSelectedListener listener3=Choice3.getOnItemSelectedListener();
-        Choice3.setOnItemSelectedListener(listener3);
-        AdapterView.OnItemSelectedListener listener4=Choice4.getOnItemSelectedListener();
-        Choice4.setOnItemSelectedListener(listener4);
-        AdapterView.OnItemSelectedListener listener5=Choice5.getOnItemSelectedListener();
-        Choice5.setOnItemSelectedListener(listener5);
+
         //Create array adapter
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.testSpinArray, android.R.layout.simple_spinner_item);
         //Specify layout to use when choices appear
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Apply adapter to spinners
         topChoice.setAdapter(adapter);
-        Choice2.setAdapter(adapter);
-        Choice3.setAdapter(adapter);
-        Choice4.setAdapter(adapter);
-        Choice5.setAdapter(adapter);
     }
 
     //User-spinner interactions:
