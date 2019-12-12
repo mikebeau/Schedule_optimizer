@@ -123,12 +123,16 @@
     <string name="TorP">Which matters more to you?</string>
     <string name="buttonCP">Input course preferences</string>
     <string-array name="testSpinArray">
-        <item>Professor</item>
-        <item>Time</item>
+        <item>Course 1</item>
+        <item>Course 2</item>
+        <item>Course 3</item>
+        <item>Course 4</item>
+        <item>Course 5</item>
     </string-array>
     <string name="noSelection">No selection</string>
     <string name="title_activity_rank_courses">RankCourses</string>
     <string name="title_activity_preferences_main_menu">PreferencesMainMenu</string>
     <string name="title_activity_schedule_display">ScheduleDisplay</string>
     <string name="title_activity_course1_preferences">Course1Preferences</string>
+    <string name="select">Please select a choice</string>
 </resources>
