@@ -8,4 +8,5 @@
     <color name="scheduleText">#262626</color>
     <color name="scheduleHighlighted">#f6bcbc</color>
     <color name="scheduleDivider">#888888</color>
+    <color name="schedulebackground">#d7f4f4</color>
 </resources>
