@@ -16,38 +16,38 @@
         android:id="@+id/dynamicLayout">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:text="@string/introductoryCP" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewProf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
+        android:layout_below="@id/textViewMain"
         android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
         android:text="@string/prof" />
 
     <TextView
-        android:id="@+id/textView1a"
+        android:id="@+id/textViewProf1"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/textView1"
+        android:layout_below="@id/textViewProf"
         android:text="@string/choice1" />
 
     <TextView
-        android:id="@+id/textView1b"
+        android:id="@+id/textViewProf2"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/textView1"
-        android:layout_toEndOf="@id/textView1a"
+        android:layout_below="@id/textViewProf"
+        android:layout_toEndOf="@id/textViewProf1"
         android:text="@string/choice2" />
 
     <Spinner
@@ -58,7 +58,7 @@
         android:layout_marginTop="8dp"
         android:dropDownWidth="150dp"
         android:spinnerMode="dropdown"
-        android:layout_below="@id/textView1a"/>
+        android:layout_below="@id/textViewProf1"/>
 
     <Spinner
         android:id="@+id/SpinProf2"
@@ -68,11 +68,11 @@
         android:layout_marginTop="8dp"
         android:dropDownWidth="150dp"
         android:spinnerMode="dropdown"
-        android:layout_below="@id/textView1b"
+        android:layout_below="@id/textViewProf2"
         android:layout_toEndOf="@id/SpinProf1"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -81,22 +81,22 @@
         android:text="@string/days" />
 
     <TextView
-        android:id="@+id/textView2a"
+        android:id="@+id/textViewDay1"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/textView2"
+        android:layout_below="@id/textViewDay"
         android:text="@string/choice1" />
 
     <TextView
-        android:id="@+id/textView2b"
+        android:id="@+id/textViewDay2"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/textView2"
-        android:layout_toEndOf="@id/textView2a"
+        android:layout_below="@id/textViewDay"
+        android:layout_toEndOf="@id/textViewDay1"
         android:text="@string/choice2" />
 
     <Spinner
@@ -107,7 +107,7 @@
         android:layout_marginTop="8dp"
         android:dropDownWidth="150dp"
         android:spinnerMode="dropdown"
-        android:layout_below="@id/textView2a"/>
+        android:layout_below="@id/textViewDay1"/>
 
     <Spinner
         android:id="@+id/SpinDays2"
@@ -117,11 +117,11 @@
         android:layout_marginTop="8dp"
         android:dropDownWidth="150dp"
         android:spinnerMode="dropdown"
-        android:layout_below="@id/textView2b"
+        android:layout_below="@id/textViewDay2"
         android:layout_toEndOf="@id/SpinDays1"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -130,22 +130,22 @@
         android:text="@string/times" />
 
     <TextView
-        android:id="@+id/textView3a"
+        android:id="@+id/textViewTime1"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/textView3"
+        android:layout_below="@id/textViewTime"
         android:text="@string/choice1" />
 
     <TextView
-        android:id="@+id/textView3b"
+        android:id="@+id/textViewTime2"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/textView3"
-        android:layout_toEndOf="@id/textView3a"
+        android:layout_below="@id/textViewTime"
+        android:layout_toEndOf="@id/textViewTime1"
         android:text="@string/choice2" />
 
     <Spinner
@@ -156,7 +156,7 @@
         android:layout_marginTop="8dp"
         android:dropDownWidth="150dp"
         android:spinnerMode="dropdown"
-        android:layout_below="@id/textView3a"/>
+        android:layout_below="@id/textViewTime1"/>
 
     <Spinner
         android:id="@+id/SpinTime2"
@@ -166,12 +166,12 @@
         android:layout_marginTop="8dp"
         android:dropDownWidth="150dp"
         android:spinnerMode="dropdown"
-        android:layout_below="@id/textView3b"
-        android:layout_toEndOf="@id/textView3a"/>
+        android:layout_below="@id/textViewTime2"
+        android:layout_toEndOf="@id/textViewTime1"/>
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewPT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -187,7 +187,7 @@
         android:layout_marginTop="8dp"
         android:dropDownWidth="150dp"
         android:spinnerMode="dropdown"
-        android:layout_below="@id/textView4"/>
+        android:layout_below="@id/textViewPT"/>
 
         <Button
             android:id="@+id/button"
