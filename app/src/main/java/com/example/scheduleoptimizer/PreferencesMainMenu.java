@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.content.Intent;
 import android.widget.TextView;
 
+import org.apache.commons.exec.InputStreamPumper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -32,17 +33,15 @@ public class PreferencesMainMenu extends AppCompatActivity {
     private Button editCourse5Preferences;
     private TextView broken2;
     final Course[] MCL = new Course[150];
-    final ArrayList<String> ex = new ArrayList<String>(Arrays.asList("EC", "BE", "ME"));
     final ArrayList<Course.Lec> MCLlec = new ArrayList<Course.Lec>();
     final ArrayList<Course.Dis> MCLdis = new ArrayList<Course.Dis>();
     final ArrayList<Course.Lab> MCLlab = new ArrayList<Course.Lab>();
     final ArrayList<Course.PLab> MCLplab = new ArrayList<Course.PLab>();
     int[] iarray = {1,2,3,4,5};
-    String[] dept = {"EK","EK","EK","ME","EC"};
-    String[] num = {"301","307","381","310","327"};
     private ArrayList<String> ChosenCourses;
     private ArrayList<String> DepartmentsEntered;
     private ArrayList<String> CourseNumberEntered;
+
 
 
     @Override
@@ -71,6 +70,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
         getSchedules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //run optimization formulae and then
                 openScheduleDisplay();
             }
@@ -120,26 +120,13 @@ public class PreferencesMainMenu extends AppCompatActivity {
 
     public void openScheduleDisplay() {
         Intent intent = new Intent(this, ScheduleDisplay.class);
-        startActivity(intent);
+        intent.putExtra("iarray", iarray);
+
         for (int j = 0; j < 5; j++) {
-            //broken2.append("\n");
-            //broken2.append(dept[j]);
-            //broken2.append(num[j]);
-            //classlist.append(t.getMCL(j).display());
-            //if(MCL[j]!=null) {
-              //  broken2.append(MCL[j].getDept());
-            //}
-            //broken2.append(String.valueOf(iarray[j]));
-            //broken2.append("\n");
-            //broken2.append(DepartmentsEntered.get(j));
-            //broken2.append(CourseNumberEntered.get(j));
-            //broken2.append(MCL[iarray[j]].getDept());
-            //broken2.append(MCL[iarray[j]].getCoursenum());
-            //broken2.append(MCLlec.get(j).getLec());
-            //broken2.append(MCLdis.get(j).getDis());
-            //broken2.append(MCLlab.get(j).getLab());
-            //broken2.append(MCLplab.get(j).getPLab());
+            broken2.append(MCL[iarray[j]].getDept());
+            broken2.append(MCL[iarray[j]].getCoursenum());
         }
+        startActivity(intent);
     }
 
     public void openCourse1Preferences() {
@@ -359,24 +346,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
                                 k++;
                             }
                         }
-/*
-                        for (int i = 0; i<5;i++)
-                        {
-                            String d1 = dept[i];
-                            String n1 = num[i];
-                            for (int j=0;j<150;j++)
-                            {
-                                if (MCL[j] != null)
-                                {
-                                    String d2 = MCL[j].getDept();
-                                    String n2 = MCL[j].getCoursenum();
-                                    if(d2.contains(d1) && n2.contains(n1))
-                                    {
-                                        iarray[i]= j;
-                                    }
-                                }
-                            }
-                        }*/
+
                         for (int i = 0; i<5;i++)
                         {
                             String d1 = DepartmentsEntered.get(i);
@@ -395,14 +365,27 @@ public class PreferencesMainMenu extends AppCompatActivity {
                             }
                         }
 
+                        ArrayList<Integer> coursearray = new ArrayList<Integer>();
+                        ArrayList<Integer> specificlecarray = new ArrayList<Integer>();
+                        int jval=0;
+                        boolean validlec=true;
+                        for(int i = 1; i<5;i++)
+                        {
+                            for(int j=0; j<MCLlec.get(iarray[i]).Sec.size();j++)
+                            {
+                                if(MCLlec.get(iarray[0]).Start.get(0)== MCLlec.get(iarray[i]).Start.get(j))
+                                {
+                                    validlec=false;
+                                }
+                                jval=j;
+                            }
+                            if(validlec)
+                                coursearray.add(0);
+                                coursearray.add(jval);
+                        }
+
                     }
-
-
                 });
-
-
-
-
             }
         }).start();
     }

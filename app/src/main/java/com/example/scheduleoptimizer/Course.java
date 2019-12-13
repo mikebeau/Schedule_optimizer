@@ -62,7 +62,47 @@ public class Course implements Serializable {
                 }
                 return  returnstring;
             }
+
+        public ArrayList<String> getProf() {
+            return Prof;
         }
+
+        public void setProf(ArrayList<String> prof) {
+            Prof = prof;
+        }
+
+        public ArrayList<String> getSec() {
+            return Sec;
+        }
+
+        public void setSec(ArrayList<String> sec) {
+            Sec = sec;
+        }
+
+        public ArrayList<String> getDay() {
+            return Day;
+        }
+
+        public void setDay(ArrayList<String> day) {
+            Day = day;
+        }
+
+        public ArrayList<String> getStart() {
+            return Start;
+        }
+
+        public void setStart(ArrayList<String> start) {
+            Start = start;
+        }
+
+        public ArrayList<String> getStop() {
+            return Stop;
+        }
+
+        public void setStop(ArrayList<String> stop) {
+            Stop = stop;
+        }
+    }
 
         public class Dis implements Serializable{
             ArrayList<String> Sec;
@@ -83,6 +123,38 @@ public class Course implements Serializable {
                             + ", " + Day.get(i) + " from " + Start.get(i) + " to " + Stop.get(i) + "\n";
                 }
                 return  returnstring;
+            }
+
+            public ArrayList<String> getSec() {
+                return Sec;
+            }
+
+            public void setSec(ArrayList<String> sec) {
+                Sec = sec;
+            }
+
+            public ArrayList<String> getDay() {
+                return Day;
+            }
+
+            public void setDay(ArrayList<String> day) {
+                Day = day;
+            }
+
+            public ArrayList<String> getStart() {
+                return Start;
+            }
+
+            public void setStart(ArrayList<String> start) {
+                Start = start;
+            }
+
+            public ArrayList<String> getStop() {
+                return Stop;
+            }
+
+            public void setStop(ArrayList<String> stop) {
+                Stop = stop;
             }
         }
 
@@ -106,6 +178,38 @@ public class Course implements Serializable {
                 }
                 return  returnstring;
             }
+
+            public ArrayList<String> getSec() {
+                return Sec;
+            }
+
+            public void setSec(ArrayList<String> sec) {
+                Sec = sec;
+            }
+
+            public ArrayList<String> getDay() {
+                return Day;
+            }
+
+            public void setDay(ArrayList<String> day) {
+                Day = day;
+            }
+
+            public ArrayList<String> getStart() {
+                return Start;
+            }
+
+            public void setStart(ArrayList<String> start) {
+                Start = start;
+            }
+
+            public ArrayList<String> getStop() {
+                return Stop;
+            }
+
+            public void setStop(ArrayList<String> stop) {
+                Stop = stop;
+            }
         }
 
         public class PLab implements Serializable{
@@ -127,6 +231,38 @@ public class Course implements Serializable {
                             + ", " + Day.get(i) + " from " + Start.get(i) + " to " + Stop.get(i) + "\n";
                 }
                 return  returnstring;
+            }
+
+            public ArrayList<String> getSec() {
+                return Sec;
+            }
+
+            public void setSec(ArrayList<String> sec) {
+                Sec = sec;
+            }
+
+            public ArrayList<String> getDay() {
+                return Day;
+            }
+
+            public void setDay(ArrayList<String> day) {
+                Day = day;
+            }
+
+            public ArrayList<String> getStart() {
+                return Start;
+            }
+
+            public void setStart(ArrayList<String> start) {
+                Start = start;
+            }
+
+            public ArrayList<String> getStop() {
+                return Stop;
+            }
+
+            public void setStop(ArrayList<String> stop) {
+                Stop = stop;
             }
         }
         public String  display(){
