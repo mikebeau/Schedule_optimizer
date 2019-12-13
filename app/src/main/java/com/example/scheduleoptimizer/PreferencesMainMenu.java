@@ -41,10 +41,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
     private ArrayList<String> ChosenCourses;
     private ArrayList<String> DepartmentsEntered;
     private ArrayList<String> CourseNumberEntered;
-    ArrayList<String> Pref1Prof;
-    ArrayList<String> Pref1Days;
-    ArrayList<String> Pref1Starts;
-    ArrayList<String> Pref1Stops;
+    ArrayList<String> Pref1Prof = new ArrayList<String>();
 
 
 
@@ -137,9 +134,6 @@ public class PreferencesMainMenu extends AppCompatActivity {
     public void openCourse1Preferences() {
         Intent intent = new Intent(this, Course1Preferences.class);
         intent.putExtra("C1Prof",Pref1Prof);
-        intent.putExtra("C1Day",Pref1Days);
-        intent.putExtra("C1Starts",Pref1Starts);
-        intent.putExtra("C1Stops",Pref1Stops);
         startActivity(intent);
     }
 
@@ -388,27 +382,11 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         }*/
 
 
-                            for (int j = 0; j < MCLlec.get(0).Prof.size(); j++) {
-                                Pref1Prof.add(MCLlec.get(0).getProf().get(j));
-                                Pref1Days.add(MCLlec.get(0).getDay().get(j));
-                                Pref1Starts.add(MCLlec.get(0).getStart().get(j));
-                                Pref1Stops.add(MCLlec.get(0).getStop().get(j));
-                            }
-                            for (int j = 0; j < MCLdis.get(0).Sec.size(); j++) {
-                                Pref1Days.add(MCLdis.get(0).getDay().get(j));
-                                Pref1Starts.add(MCLdis.get(0).getStart().get(j));
-                                Pref1Stops.add(MCLdis.get(0).getStop().get(j));
-                            }
-                            for (int j = 0; j < MCLlab.get(0).Sec.size(); j++) {
-                                Pref1Days.add(MCLlab.get(0).getDay().get(j));
-                                Pref1Starts.add(MCLlab.get(0).getStart().get(j));
-                                Pref1Stops.add(MCLlab.get(0).getStop().get(j));
-                            }
-                            for (int j = 0; j < MCLplab.get(0).Sec.size(); j++) {
-                                Pref1Days.add(MCLplab.get(0).getDay().get(j));
-                                Pref1Starts.add(MCLplab.get(0).getStart().get(j));
-                                Pref1Stops.add(MCLplab.get(0).getStop().get(j));
-                            }
+                                for(int j =0; j < (MCLlec.get(iarray[0]).getProf().size());j++)
+                                {
+                                    Pref1Prof.add(MCLlec.get(iarray[0]).getProf().get(j));
+                                }
+
 
                     }
                 });
