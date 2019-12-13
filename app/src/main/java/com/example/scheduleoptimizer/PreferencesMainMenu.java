@@ -379,8 +379,8 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         }*/
                         for (int i = 0; i<5;i++)
                         {
-                            String d1 = DepartmentsEntered.get(i);
-                            String n1 = CourseNumberEntered.get(i);
+                            String d1 = dept[i];
+                            String n1 = num[i];
                             for (int j=0;j<150;j++)
                             {
                                 if (MCL[j] != null)

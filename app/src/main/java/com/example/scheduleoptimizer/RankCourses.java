@@ -32,6 +32,10 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
     private Spinner Choice5;
     private ArrayList<String> CourseRankings;
     private ArrayList<String> ChosenCourses;
+    private ArrayList<String> DepartmentsEntered;
+    private ArrayList<String> CourseNumberEntered;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,9 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
 
         //Assigning user input to ChosenCourses
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
+        DepartmentsEntered=getIntent().getStringArrayListExtra("CourseNumbersEntered");
+        CourseNumberEntered=getIntent().getStringArrayListExtra("CoursesEntered");
+
 
         //Assigning layout button and action to enterRankings button initialized here
         enterRankings=findViewById(R.id.enterRankings);
@@ -146,6 +153,9 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
         }
         if(sum==ChosenCourses.size()) {
             Intent intent = new Intent(this, PreferencesMainMenu.class);
+            intent.putExtra("DepartmentsEntered", DepartmentsEntered);
+            intent.putExtra("CoursesEntered", CourseNumberEntered);
+            intent.putExtra("CourseNames",ChosenCourses);
             startActivity(intent);
         }
         else

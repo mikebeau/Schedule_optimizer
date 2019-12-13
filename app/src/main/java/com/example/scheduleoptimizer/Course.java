@@ -1,8 +1,10 @@
 package com.example.scheduleoptimizer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import android.app.Application;
 
-public class Course {
+public class Course implements Serializable {
 
         public String College;
         public String Dept;
@@ -14,7 +16,31 @@ public class Course {
             this.coursenum = num;
         }
 
-        public  class Lec {
+    public String getCollege() {
+        return College;
+    }
+
+    public void setCollege(String college) {
+        College = college;
+    }
+
+    public String getDept() {
+        return Dept;
+    }
+
+    public void setDept(String dept) {
+        Dept = dept;
+    }
+
+    public String getCoursenum() {
+        return coursenum;
+    }
+
+    public void setCoursenum(String coursenum) {
+        this.coursenum = coursenum;
+    }
+
+    public  class Lec implements Serializable{
             ArrayList<String> Prof;
             ArrayList<String> Sec;
             ArrayList<String> Day;
@@ -38,7 +64,7 @@ public class Course {
             }
         }
 
-        public class Dis {
+        public class Dis implements Serializable{
             ArrayList<String> Sec;
             ArrayList<String> Day;
             ArrayList<String> Start;
@@ -60,7 +86,7 @@ public class Course {
             }
         }
 
-        public class Lab {
+        public class Lab implements Serializable{
             ArrayList<String> Sec;
             ArrayList<String> Day;
             ArrayList<String> Start;
@@ -82,7 +108,7 @@ public class Course {
             }
         }
 
-        public class PLab {
+        public class PLab implements Serializable{
             ArrayList<String> Sec;
             ArrayList<String> Day;
             ArrayList<String> Start;
