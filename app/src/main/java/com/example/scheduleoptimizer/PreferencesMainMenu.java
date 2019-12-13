@@ -41,6 +41,9 @@ public class PreferencesMainMenu extends AppCompatActivity {
     private ArrayList<String> ChosenCourses;
     private ArrayList<String> DepartmentsEntered;
     private ArrayList<String> CourseNumberEntered;
+     ArrayList<String> Pref1Prof;
+     ArrayList<String> Pref1Times;
+
 
 
 
@@ -131,6 +134,8 @@ public class PreferencesMainMenu extends AppCompatActivity {
 
     public void openCourse1Preferences() {
         Intent intent = new Intent(this, Course1Preferences.class);
+        intent.putExtra("C1Prof",Pref1Prof);
+        intent.putExtra("C1Time",Pref1Times);
         startActivity(intent);
     }
 
@@ -347,19 +352,15 @@ public class PreferencesMainMenu extends AppCompatActivity {
                             }
                         }
 
-                        for (int i = 0; i<5;i++)
-                        {
+                        for (int i = 0; i < 5; i++) {
                             String d1 = DepartmentsEntered.get(i);
                             String n1 = CourseNumberEntered.get(i);
-                            for (int j=0;j<150;j++)
-                            {
-                                if (MCL[j] != null)
-                                {
+                            for (int j = 0; j < 150; j++) {
+                                if (MCL[j] != null) {
                                     String d2 = MCL[j].getDept();
                                     String n2 = MCL[j].getCoursenum();
-                                    if(d2.contains(d1) && n2.contains(n1))
-                                    {
-                                        iarray[i]= j;
+                                    if (d2.contains(d1) && n2.contains(n1)) {
+                                        iarray[i] = j;
                                     }
                                 }
                             }
@@ -367,23 +368,38 @@ public class PreferencesMainMenu extends AppCompatActivity {
 
                         ArrayList<Integer> coursearray = new ArrayList<Integer>();
                         ArrayList<Integer> specificlecarray = new ArrayList<Integer>();
-                        int jval=0;
-                        boolean validlec=true;
-                        for(int i = 1; i<5;i++)
-                        {
-                            for(int j=0; j<MCLlec.get(iarray[i]).Sec.size();j++)
-                            {
-                                if(MCLlec.get(iarray[0]).Start.get(0)== MCLlec.get(iarray[i]).Start.get(j))
-                                {
-                                    validlec=false;
+                        int jval = 0;
+                        boolean validlec = true;
+                        for (int i = 1; i < 5; i++) {
+                            for (int j = 0; j < MCLlec.get(iarray[i]).Sec.size(); j++) {
+                                if (MCLlec.get(iarray[0]).Start.get(0) == MCLlec.get(iarray[i]).Start.get(j)) {
+                                    validlec = false;
                                 }
-                                jval=j;
+                                jval = j;
                             }
-                            if(validlec)
+                            if (validlec)
                                 coursearray.add(0);
-                                coursearray.add(jval);
+                            coursearray.add(jval);
                         }
-
+                        for (int i = 0; i < 1; i++) {
+                            for (int j = 0; j < MCLlec.get(i).Prof.size(); j++) {
+                                Pref1Prof.add(MCLlec.get(i).getProf().get(j));
+                                Pref1Times.add(types[i]+MCLlec.get(i).getDay().get(j) +
+                                        MCLlec.get(i).getStart().get(j) + MCLlec.get(i).getStop().get(j));
+                            }
+                            for (int j = 0; j < MCLdis.get(i).Sec.size(); j++) {
+                                Pref1Times.add(types[i]+MCLdis.get(i).getDay().get(j) +
+                                        MCLdis.get(i).getStart().get(j) + MCLdis.get(i).getStop().get(j));
+                            }
+                            for (int j = 0; j < MCLlab.get(i).Sec.size(); j++) {
+                                Pref1Times.add(types[i]+MCLlab.get(i).getDay().get(j) +
+                                        MCLlab.get(i).getStart().get(j) + MCLlab.get(i).getStop().get(j));
+                            }
+                            for (int j = 0; j < MCLplab.get(i).Sec.size(); j++) {
+                                Pref1Times.add(types[i]+MCLplab.get(i).getDay().get(j) +
+                                        MCLplab.get(i).getStart().get(j) + MCLplab.get(i).getStop().get(j));
+                            }
+                        }
                     }
                 });
             }

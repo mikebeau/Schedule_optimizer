@@ -22,6 +22,8 @@ import java.util.ArrayList;
 public class Course1Preferences extends AppCompatActivity {
 
     RelativeLayout dynamicLayout;
+    private ArrayList<String> Pref1Prof;
+    private ArrayList<String> Pref1Times;
     int numProfs;
     int numDaysTimes;
     ArrayList<String> ProfList;
@@ -36,6 +38,9 @@ public class Course1Preferences extends AppCompatActivity {
         setContentView(R.layout.activity_course1_preferences);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Pref1Prof = getIntent().getStringArrayListExtra("C1Prof");
+        Pref1Times = getIntent().getStringArrayListExtra("C1Time");
+
 
         numDaysTimes=10;
         numProfs=10;
