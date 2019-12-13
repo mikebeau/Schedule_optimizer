@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private Button openSavedSchedule;
     private Button testButton;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

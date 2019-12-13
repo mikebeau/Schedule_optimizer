@@ -123,6 +123,7 @@
     <string name="TorP">Which matters more to you?</string>
     <string name="buttonCP">Input course preferences</string>
     <string-array name="testSpinArray">
+        <item>Select a course</item>
         <item>Course 1</item>
         <item>Course 2</item>
         <item>Course 3</item>
