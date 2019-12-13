@@ -37,6 +37,12 @@ public class PreferencesMainMenu extends AppCompatActivity {
     final ArrayList<Course.Dis> MCLdis = new ArrayList<Course.Dis>();
     final ArrayList<Course.Lab> MCLlab = new ArrayList<Course.Lab>();
     final ArrayList<Course.PLab> MCLplab = new ArrayList<Course.PLab>();
+    int[] iarray = {1,2,3,4,5};
+    String[] dept = {"EK","EK","EK","ME","EC"};
+    String[] num = {"301","307","381","310","327"};
+    private ArrayList<String> ChosenCourses;
+    private ArrayList<String> DepartmentsEntered;
+    private ArrayList<String> CourseNumberEntered;
 
 
     @Override
@@ -55,6 +61,10 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
+        DepartmentsEntered=getIntent().getStringArrayListExtra("CourseNumbersEntered");
+        CourseNumberEntered=getIntent().getStringArrayListExtra("CoursesEntered");
+
 
 
         Button getSchedules = findViewById(R.id.buttonGetSchedules);
@@ -109,16 +119,27 @@ public class PreferencesMainMenu extends AppCompatActivity {
     }
 
     public void openScheduleDisplay() {
-        Intent intent = new Intent(this, ScheduleDisplay.class);
-        startActivity(intent);
-        /*for (int j = 0; j < 10; j++) {
+        //Intent intent = new Intent(this, ScheduleDisplay.class);
+        //startActivity(intent);
+        for (int j = 0; j < 5; j++) {
+            //broken2.append("\n");
+            //broken2.append(dept[j]);
+            //broken2.append(num[j]);
             //classlist.append(t.getMCL(j).display());
-            broken2.append(MCL[j].display());
-            broken2.append(MCLlec.get(j).getLec());
-            broken2.append(MCLdis.get(j).getDis());
-            broken2.append(MCLlab.get(j).getLab());
-            broken2.append(MCLplab.get(j).getPLab());
-        }*/
+            //if(MCL[j]!=null) {
+              //  broken2.append(MCL[j].getDept());
+            //}
+            //broken2.append(String.valueOf(iarray[j]));
+            broken2.append("\n");
+            //broken2.append(DepartmentsEntered.get(j));
+            //broken2.append(CourseNumberEntered.get(j));
+            broken2.append(MCL[iarray[j]].getDept());
+            broken2.append(MCL[iarray[j]].getCoursenum());
+            //broken2.append(MCLlec.get(j).getLec());
+            //broken2.append(MCLdis.get(j).getDis());
+            //broken2.append(MCLlab.get(j).getLab());
+            //broken2.append(MCLplab.get(j).getPLab());
+        }
     }
 
     public void openCourse1Preferences() {
@@ -311,8 +332,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
                                 PLabStart.clear();
                                 PLabStop.clear();
 
-                            }
-                            else if (!s1.contains(s2)) {
+                            } else if (!s1.contains(s2)) {
                                 MCL[k] = new Course(colleges[i], departments[i], courseNumber[i]);
                                 MCLlec.add(MCL[k].new Lec((ArrayList<String>) LecProf.clone(), (ArrayList<String>) LecSec.clone(), (ArrayList<String>) LecDay.clone(), (ArrayList<String>) LecStart.clone(), (ArrayList<String>) LecStop.clone()));
                                 MCLdis.add(MCL[k].new Dis((ArrayList<String>) DisSec.clone(), (ArrayList<String>) DisDay.clone(), (ArrayList<String>) DisStart.clone(), (ArrayList<String>) DisStop.clone()));
@@ -339,8 +359,50 @@ public class PreferencesMainMenu extends AppCompatActivity {
                                 k++;
                             }
                         }
+/*
+                        for (int i = 0; i<5;i++)
+                        {
+                            String d1 = dept[i];
+                            String n1 = num[i];
+                            for (int j=0;j<150;j++)
+                            {
+                                if (MCL[j] != null)
+                                {
+                                    String d2 = MCL[j].getDept();
+                                    String n2 = MCL[j].getCoursenum();
+                                    if(d2.contains(d1) && n2.contains(n1))
+                                    {
+                                        iarray[i]= j;
+                                    }
+                                }
+                            }
+                        }*/
+                        for (int i = 0; i<5;i++)
+                        {
+                            String d1 = DepartmentsEntered.get(i);
+                            String n1 = CourseNumberEntered.get(i);
+                            for (int j=0;j<150;j++)
+                            {
+                                if (MCL[j] != null)
+                                {
+                                    String d2 = MCL[j].getDept();
+                                    String n2 = MCL[j].getCoursenum();
+                                    if(d2.contains(d1) && n2.contains(n1))
+                                    {
+                                        iarray[i]= j;
+                                    }
+                                }
+                            }
+                        }
+
                     }
+
+
                 });
+
+
+
+
             }
         }).start();
     }
