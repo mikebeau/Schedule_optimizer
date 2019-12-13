@@ -28,7 +28,10 @@ public class Course1Preferences extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         dynamicLayout = findViewById(R.id.dynamicLayout);
+        switch(numDays){
+            case 1:
 
+        }
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

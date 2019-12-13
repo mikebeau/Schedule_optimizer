@@ -30,8 +30,8 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
     private Spinner Choice3;
     private Spinner Choice4;
     private Spinner Choice5;
-    private List<String> CourseRankings;
-    private List<String> ChosenCourses;
+    private ArrayList<String> CourseRankings;
+    private ArrayList<String> ChosenCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +49,14 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        //Creating list of chosen courses to compare with list of course rankings at end
-        //this will confirm that they haven't double-ranked any courses, or left spots blank
-        Resources res = getResources();
-        String[] courses = res.getStringArray(R.array.testSpinArray);
-        ChosenCourses=new ArrayList<String>();
-        for(int i=0; i<5; i++)
-        {   ChosenCourses.add(courses[i+1]);}
-
         //Creating list to be filled with user's ranked course choices upon spinner selection
         CourseRankings = new ArrayList<String>();
         String empty="empty";
         for (int i=0; i<5; i++)
         {CourseRankings.add(i,empty);}
+
+        //Assigning user input to ChosenCourses
+        ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
 
         //Assigning layout button and action to enterRankings button initialized here
         enterRankings=findViewById(R.id.enterRankings);
@@ -86,7 +81,7 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
         Choice5.setOnItemSelectedListener(this);
 
         //Create array adapter
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.testSpinArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, ChosenCourses);
         //Specify layout to use when choices appear
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Apply adapter to spinners
