@@ -62,7 +62,7 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
         //Assigning user input to ChosenCourses
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
         DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
-        CourseNumberEntered=getIntent().getStringArrayListExtra("CoursesEntered");
+        CourseNumberEntered=getIntent().getStringArrayListExtra("NumbersEntered");
 
 
         //Assigning layout button and action to enterRankings button initialized here
@@ -154,7 +154,7 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
         if(sum==ChosenCourses.size()) {
             Intent intent = new Intent(this, PreferencesMainMenu.class);
             intent.putExtra("DepartmentsEntered", DepartmentsEntered);
-            intent.putExtra("CoursesEntered", CourseNumberEntered);
+            intent.putExtra("NumbersEntered", CourseNumberEntered);
             intent.putExtra("CourseNames",ChosenCourses);
             startActivity(intent);
         }

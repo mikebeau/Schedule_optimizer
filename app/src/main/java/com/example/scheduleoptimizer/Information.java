@@ -104,7 +104,7 @@ public class Information extends AppCompatActivity {
         else {
             Intent intent = new Intent(this, RankCourses.class);
             intent.putExtra("DepartmentsEntered", DepartmentsEntered);
-            intent.putExtra("CoursesEntered", CourseNumbersEntered);
+            intent.putExtra("NumbersEntered", CourseNumbersEntered);
             intent.putExtra("CourseNames",CourseNamesEntered);
             startActivity(intent);
         }
