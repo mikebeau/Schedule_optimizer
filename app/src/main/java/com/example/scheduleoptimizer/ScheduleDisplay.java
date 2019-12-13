@@ -42,11 +42,11 @@ public class ScheduleDisplay extends AppCompatActivity {
         TextView class4 = new TextView(this);
         TextView class5 = new TextView(this);
 
-        String[] start_time_array = {"12:30", "8:00"};
-        String[] end_time_array = {"1:45", "10:00"};
+        String[] start_time_array = {"9:05am", "8:00pm"};
+        String[] end_time_array = {"9:55am", "10:00pm"};
         String[] color_array = {"#ff0000", "#ffff00", "#80ff00", "#00ffff", "#0040ff", "#ff00ff"};
-        String[] class_name_array = {"Class 1", "Class 2"};
-        String[] day_array = {"Monday, Wednesday", "Tuesday"};
+        String[] class_name_array = {"BE 492", "Class 2"};
+        String[] day_array = {"Mon", "Tuesday"};
 
         for(int i = 0; i<start_time_array.length; i++){
             String delims = "[,]+";
@@ -90,25 +90,22 @@ public class ScheduleDisplay extends AppCompatActivity {
         String[] end_string;
         end_string = end_time.split(delims);
 
-        delims = "[,]+";
-        String[] day_string;
-        day_string = day.split(delims);
-
         int ending_time;
         int begin_time;
+        String am_string = "am";
 
-        if(Integer.valueOf(end_string[0]) > 7) {
-            ending_time = Integer.valueOf(end_string[0]) * 60 + Integer.valueOf(end_string[1]) - 7 * 60;
+        if(end_time.contains(am_string)) {
+            ending_time = Integer.valueOf(end_string[0]) * 60 + Integer.valueOf(end_string[1].substring(0,2)) - 7 * 60;
         }
         else{
-            ending_time = Integer.valueOf(end_string[0]) * 60 + Integer.valueOf(end_string[1]) - 7 * 60 + 12*60;
+            ending_time = Integer.valueOf(end_string[0]) * 60 + Integer.valueOf(end_string[1].substring(0,2)) - 7 * 60 + 12*60;
         }
 
-        if(Integer.valueOf(start_string[0]) > 7) {
-            begin_time = Integer.valueOf(start_string[0]) * 60 + Integer.valueOf(start_string[1]) - 7 * 60;
+        if(start_time.contains(am_string)) {
+            begin_time = Integer.valueOf(start_string[0]) * 60 + Integer.valueOf(start_string[1].substring(0,2)) - 7 * 60;
         }
         else{
-            begin_time = Integer.valueOf(start_string[0]) * 60 + Integer.valueOf(start_string[1]) - 7 * 60 + 12*60;
+            begin_time = Integer.valueOf(start_string[0]) * 60 + Integer.valueOf(start_string[1].substring(0,2)) - 7 * 60 + 12*60;
         }
 
 
