@@ -52,6 +52,9 @@ public class PreferencesMainMenu extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         broken2=(TextView)findViewById(R.id.broken2);
+        ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
+        DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
+        CourseNumberEntered=getIntent().getStringArrayListExtra("NumbersEntered");
         importClasses();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -61,9 +64,6 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
-        DepartmentsEntered=getIntent().getStringArrayListExtra("CourseNumbersEntered");
-        CourseNumberEntered=getIntent().getStringArrayListExtra("CoursesEntered");
 
 
 
@@ -379,8 +379,8 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         }*/
                         for (int i = 0; i<5;i++)
                         {
-                            String d1 = dept[i];
-                            String n1 = num[i];
+                            String d1 = DepartmentsEntered.get(i);
+                            String n1 = CourseNumberEntered.get(i);
                             for (int j=0;j<150;j++)
                             {
                                 if (MCL[j] != null)
