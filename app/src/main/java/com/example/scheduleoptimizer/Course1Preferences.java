@@ -9,8 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 
 public class Course1Preferences extends AppCompatActivity {
+
+    RelativeLayout dynamicLayout;
+    int numProfs;
+    int numTimes;
+    int numDays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +26,9 @@ public class Course1Preferences extends AppCompatActivity {
         setContentView(R.layout.activity_course1_preferences);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        dynamicLayout = findViewById(R.id.dynamicLayout);
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -27,6 +38,7 @@ public class Course1Preferences extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }
 
+
+    }
 }
