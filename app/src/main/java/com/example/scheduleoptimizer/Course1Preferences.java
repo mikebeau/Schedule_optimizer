@@ -35,24 +35,31 @@ public class Course1Preferences extends AppCompatActivity {
         dynamicLayout = findViewById(R.id.dynamicLayout);
         TextView textView;
         RelativeLayout.LayoutParams params;
+        ViewGroup.LayoutParams higherparams;
         switch(numDays){
             case 1:
-                textView=findViewById(R.id.textViewTime1);
+                textView=findViewById(R.id.textViewDay1);
                 dynamicLayout.removeView(textView);
-                textView=findViewById(R.id.textViewTime2);
+                textView=findViewById(R.id.textViewDay2);
                 dynamicLayout.removeView(textView);
                 Spinner spinner=findViewById(R.id.SpinDays1);
                 dynamicLayout.removeView(spinner);
                 spinner=findViewById(R.id.SpinDays2);
                 dynamicLayout.removeView(spinner);
-                textView=findViewById(R.id.textViewTime);
+                textView=findViewById(R.id.textViewDay);
                 textView.setText("Only 1 option for days of week");
+                textView=findViewById(R.id.textViewTime);
+                higherparams=textView.getLayoutParams();
+                int width=higherparams.width;
+                params=new RelativeLayout.LayoutParams(width,RelativeLayout.LayoutParams.WRAP_CONTENT);
+                params.addRule(RelativeLayout.BELOW,R.id.textViewDay);
+                textView.setLayoutParams(params);
                 break;
             case 2:
                 break;
             case 3:
                 textView=findViewById(R.id.textViewDay1);
-                ViewGroup.LayoutParams higherparams=textView.getLayoutParams();
+                higherparams=textView.getLayoutParams();
                 higherparams.width=250;
                 textView.setLayoutParams(higherparams);
                 textView=findViewById(R.id.textViewDay2);

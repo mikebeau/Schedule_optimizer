@@ -61,6 +61,7 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
 
         //Assigning user input to ChosenCourses
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
+        ChosenCourses.add(0,empty);
         DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
         CourseNumberEntered=getIntent().getStringArrayListExtra("NumbersEntered");
 
@@ -147,11 +148,11 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
 
     public void openPreferencesMainMenu(){
         int sum=0;
-        for (int i=0; i<ChosenCourses.size(); i++) {
-            if (CompareLists(i))
+        for (int i=1; i<ChosenCourses.size(); i++) {
+            if (CourseRankings.contains(ChosenCourses.get(i)))
                 sum++;
         }
-        if(sum==ChosenCourses.size()) {
+        if(sum==ChosenCourses.size()-1) {
             Intent intent = new Intent(this, PreferencesMainMenu.class);
             intent.putExtra("DepartmentsEntered", DepartmentsEntered);
             intent.putExtra("NumbersEntered", CourseNumberEntered);
@@ -162,7 +163,4 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
             Toast.makeText(getApplicationContext(),"Please double-check your rankings!",Toast.LENGTH_LONG).show();
     }
 
-    public boolean CompareLists(int i) {
-        return (CourseRankings.contains(ChosenCourses.get(i)));
-    }
 }
