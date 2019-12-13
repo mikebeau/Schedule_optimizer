@@ -119,8 +119,8 @@ public class PreferencesMainMenu extends AppCompatActivity {
     }
 
     public void openScheduleDisplay() {
-        //Intent intent = new Intent(this, ScheduleDisplay.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, ScheduleDisplay.class);
+        startActivity(intent);
         for (int j = 0; j < 5; j++) {
             //broken2.append("\n");
             //broken2.append(dept[j]);
@@ -130,11 +130,11 @@ public class PreferencesMainMenu extends AppCompatActivity {
               //  broken2.append(MCL[j].getDept());
             //}
             //broken2.append(String.valueOf(iarray[j]));
-            broken2.append("\n");
+            //broken2.append("\n");
             //broken2.append(DepartmentsEntered.get(j));
             //broken2.append(CourseNumberEntered.get(j));
-            broken2.append(MCL[iarray[j]].getDept());
-            broken2.append(MCL[iarray[j]].getCoursenum());
+            //broken2.append(MCL[iarray[j]].getDept());
+            //broken2.append(MCL[iarray[j]].getCoursenum());
             //broken2.append(MCLlec.get(j).getLec());
             //broken2.append(MCLdis.get(j).getDis());
             //broken2.append(MCLlab.get(j).getLab());
