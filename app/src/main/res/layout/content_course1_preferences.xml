@@ -83,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:textSize="16dp"
         android:layout_below="@id/SpinProf1"
         android:text="@string/days" />
 
@@ -127,62 +128,12 @@
         android:layout_toEndOf="@id/SpinDays1"/>
 
     <TextView
-        android:id="@+id/textViewTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/SpinDays1"
-        android:text="@string/times" />
-
-    <TextView
-        android:id="@+id/textViewTime1"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/textViewTime"
-        android:text="@string/choice1" />
-
-    <TextView
-        android:id="@+id/textViewTime2"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/textViewTime"
-        android:layout_toEndOf="@id/textViewTime1"
-        android:text="@string/choice2" />
-
-    <Spinner
-        android:id="@+id/SpinTime1"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:dropDownWidth="150dp"
-        android:spinnerMode="dropdown"
-        android:layout_below="@id/textViewTime1"/>
-
-    <Spinner
-        android:id="@+id/SpinTime2"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:dropDownWidth="150dp"
-        android:spinnerMode="dropdown"
-        android:layout_below="@id/textViewTime2"
-        android:layout_toEndOf="@id/textViewTime1"/>
-
-
-    <TextView
         android:id="@+id/textViewPT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/SpinTime2"
+        android:layout_below="@id/SpinDays2"
         android:text="@string/TorP" />
 
     <Spinner
@@ -281,85 +232,6 @@
 
         <TextView
             android:id="@+id/textViewDays10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <Spinner
-            android:id="@+id/SpinTime3"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <Spinner
-            android:id="@+id/SpinTime4"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <Spinner
-            android:id="@+id/SpinTime5"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <Spinner
-            android:id="@+id/SpinTime6"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <Spinner
-            android:id="@+id/SpinTime7"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <Spinner
-            android:id="@+id/SpinTime8"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <Spinner
-            android:id="@+id/SpinTime9"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/textViewTime3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/textViewTime4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <TextView
-            android:id="@+id/textViewTime5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <TextView
-            android:id="@+id/textViewTime6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <TextView
-            android:id="@+id/textViewTime7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <TextView
-            android:id="@+id/textViewTime8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <TextView
-            android:id="@+id/textViewTime9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-        <TextView
-            android:id="@+id/textViewTime10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone" />

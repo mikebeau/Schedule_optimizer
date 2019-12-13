@@ -117,7 +117,7 @@
     <string name="introductoryCP">Please choose your preferences in the following categories</string>
     <string name="section">Section number</string>
     <string name="times">Start to stop times</string>
-    <string name="days">Days of week</string>
+    <string name="days">Day and time of class</string>
     <string name="prof">Professor</string>
     <string name="type">Course type</string>
     <string name="TorP">Which matters more to you?</string>
