@@ -10,6 +10,12 @@
     tools:showIn="@layout/activity_course1_preferences"
     android:background="@color/background">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/scrollableLayout">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -279,6 +285,162 @@
             android:layout_height="wrap_content"
             android:visibility="gone" />
 
+        <Spinner
+            android:id="@+id/SpinTime3"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/SpinTime4"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinTime5"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinTime6"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinTime7"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinTime8"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinTime9"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textViewTime3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textViewTime4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewTime5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewTime6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewTime7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewTime8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewTime9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewTime10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/SpinProf3"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinProf4"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinProf5"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinProf6"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinProf7"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinProf8"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/SpinProf9"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textViewProf3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewProf4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewProf5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewProf6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewProf7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewProf8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewProf9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textViewProf10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
@@ -295,5 +457,6 @@
             android:layout_below="@id/SpinPT" />
 
     </RelativeLayout>
+</ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
