@@ -61,7 +61,7 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
 
         //Assigning user input to ChosenCourses
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
-        DepartmentsEntered=getIntent().getStringArrayListExtra("CourseNumbersEntered");
+        DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
         CourseNumberEntered=getIntent().getStringArrayListExtra("CoursesEntered");
 
 

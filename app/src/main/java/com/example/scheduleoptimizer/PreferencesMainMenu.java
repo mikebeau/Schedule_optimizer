@@ -51,7 +51,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_preferences_main_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        broken2=(TextView)findViewById(R.id.broken2);
+        //broken2=(TextView)findViewById(R.id.broken2);
         importClasses();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
             }
         });
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
-        DepartmentsEntered=getIntent().getStringArrayListExtra("CourseNumbersEntered");
+        DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
         CourseNumberEntered=getIntent().getStringArrayListExtra("CoursesEntered");
 
 
