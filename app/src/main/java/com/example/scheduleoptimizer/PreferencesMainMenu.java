@@ -128,11 +128,13 @@ public class PreferencesMainMenu extends AppCompatActivity {
     public void openScheduleDisplay() {
         Intent intent = new Intent(this, ScheduleDisplay.class);
         intent.putExtra("iarray", iarray);
-
+/*
         for (int j = 0; j < 5; j++) {
             broken2.append(MCL[iarray[j]].getDept());
             broken2.append(MCL[iarray[j]].getCoursenum());
         }
+        */
+
         startActivity(intent);
     }
 

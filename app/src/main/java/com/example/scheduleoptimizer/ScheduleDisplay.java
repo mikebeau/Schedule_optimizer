@@ -14,6 +14,7 @@ import androidx.core.content.res.ResourcesCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ScheduleDisplay extends AppCompatActivity {
 
@@ -42,44 +44,19 @@ public class ScheduleDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_schedule_display);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        importClasses();
+
         iarray = getIntent().getIntArrayExtra("iarray");
 
-        RelativeLayout mondaySchedule = findViewById(R.id.mondayRelativeLayout);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-
-        //Graphing example Class
-        TextView class1 = new TextView(this);
-        TextView class2 = new TextView(this);
-        TextView class3 = new TextView(this);
-        TextView class4 = new TextView(this);
-        TextView class5 = new TextView(this);
-
-        String[] start_time_array = {"9:05am", "8:00pm"};
-        String[] end_time_array = {"9:55am", "10:00pm"};
-        String[] color_array = {"#ff0000", "#ffff00", "#80ff00", "#00ffff", "#0040ff", "#ff00ff"};
-        String[] class_name_array = {"BE 492", "Class 2"};
-        String[] day_array = {"Mon", "Tuesday"};
-
-        for(int i = 0; i<start_time_array.length; i++){
-            String delims = "[,]+";
-            String[] day_string;
-            day_string = day_array[i].split(delims);
-            for(int j = 0; j < day_string.length;j++)
-            {
-                plotClass(day_string[j], start_time_array[i], end_time_array[i], color_array[i], class_name_array[i]);
-            }
-
-        }
 
 
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.save);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Saving data Schedule", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -315,6 +292,172 @@ public class ScheduleDisplay extends AppCompatActivity {
                             coursearray.add(jval);
                         }
 
+                        // get Schedule and display classes
+                        /*
+                        String[] start_time_array = {"9:05am", "6:30pm", "2:30pm", "12:20pm", "2:30pm", "10:10am", "4:40pm", "9:00am", "10:10am", "1:30pm"};
+                        String[] end_time_array = {"9:55am", "9:15pm", "4:15pm", "1:10pm", "4:15pm", "11:55am", "5:30pm", "10:45am", "11:55am", "3:15"};
+                        String[] color_array = {"#ff0000", "#ffff00", "#80ff00", "#00ffff", "#0040ff", "#ff00ff", "#d966ff", "#00ffff", "#ff668c", "#fa53af", "#ff00ff", "#ff00ff", "#ff00ff", "#ff00ff"};
+                        String[] class_name_array = {"BE 492", "BE 492", "EC410", "EC410", "EC 410", "EK424", "EK424", "EK481", "EK481", "EC500"};
+                        String[] day_array = {"Mon", "Mon", "Mon,Wed", "Fri", "Fri", "Mon,Wed", "Fri", "Tue,Thu", "Fri", "Tue,Thu"};*/
+
+
+                        // Initializing string lists
+                        List<String> start_time_list=new ArrayList<>();
+                        List<String> end_time_list=new ArrayList<>();
+                        List<String> class_name_list=new ArrayList<>();
+                        List<String> day_list=new ArrayList<>();
+
+                        //Initializing courses that don't confict list
+                        boolean validSchedule = true;
+
+                        //Looping through to see if any classed confict
+                        for(int classCurrent = 0; classCurrent < iarray.length; classCurrent++){
+                            int numComparison = 0;
+                            int numConflict = 0;
+                            for(int classCompare = 0; classCompare < iarray.length; classCompare++){
+                                if (MCLlec.get(iarray[classCurrent]).getStart().size() != 0 && MCLlec.get(iarray[classCompare]).getStart().size() != 0) {
+                                    String start_time_current = MCLlec.get(iarray[classCurrent]).Start.get(0).trim();
+                                    String end_time_current = MCLlec.get(iarray[classCurrent]).Stop.get(0).trim();
+                                    String start_time_compare = MCLlec.get(iarray[classCompare]).Start.get(0).trim();
+                                    String end_time_compare = MCLlec.get(iarray[classCompare]).Stop.get(0).trim();
+                                    String day_string_current = MCLlec.get(iarray[classCurrent]).Day.get(0);
+                                    String day_string_compare = MCLlec.get(iarray[classCompare]).Day.get(0);
+
+                                    //Parse start_time string
+                                    String delims = "[:]+";
+                                    String[] start_string_current;
+                                    start_string_current = start_time_current.split(delims);
+
+                                    String[] end_string_current;
+                                    end_string_current = end_time_current.split(delims);
+
+                                    String[] start_string_compare;
+                                    start_string_compare = start_time_current.split(delims);
+
+                                    String[] end_string_compare;
+                                    end_string_compare = end_time_current.split(delims);
+
+
+                                    int ending_time_current;
+                                    int begin_time_current;
+                                    int begin_time_compare;
+                                    int ending_time_compare;
+                                    String am_string = "am";
+
+                                    if (start_time_current.contains(am_string) || start_string_current[0].contains("12")) {
+                                        begin_time_current = Integer.valueOf(start_string_current[0]) * 60 + Integer.valueOf(start_string_current[1].substring(0, 2)) - 7 * 60;
+                                    } else {
+                                        begin_time_current = Integer.valueOf(start_string_current[0]) * 60 + Integer.valueOf(start_string_current[1].substring(0, 2)) - 7 * 60 + 12 * 60;
+                                    }
+
+                                    if (end_time_current.contains(am_string) || end_string_current[0].contains("12")) {
+                                        ending_time_current = Integer.valueOf(end_string_current[0]) * 60 + Integer.valueOf(end_string_current[1].substring(0, 2)) - 7 * 60;
+                                    } else {
+                                        ending_time_current = Integer.valueOf(end_string_current[0]) * 60 + Integer.valueOf(end_string_current[1].substring(0, 2)) - 7 * 60 + 12 * 60;
+                                    }
+
+
+                                    if (start_time_compare.contains(am_string) || start_string_compare[0].contains("12")) {
+                                        begin_time_compare = Integer.valueOf(start_string_compare[0]) * 60 + Integer.valueOf(start_string_compare[1].substring(0, 2)) - 7 * 60;
+                                    } else {
+                                        begin_time_compare = Integer.valueOf(start_string_compare[0]) * 60 + Integer.valueOf(start_string_compare[1].substring(0, 2)) - 7 * 60 + 12 * 60;
+                                    }
+
+                                    if (end_time_compare.contains(am_string) || end_string_compare[0].contains("12")) {
+                                        ending_time_compare = Integer.valueOf(end_string_compare[0]) * 60 + Integer.valueOf(end_string_compare[1].substring(0, 2)) - 7 * 60;
+                                    } else {
+                                        ending_time_compare = Integer.valueOf(end_string_compare[0]) * 60 + Integer.valueOf(end_string_compare[1].substring(0, 2)) - 7 * 60 + 12 * 60;
+                                    }
+
+                                    numComparison++;
+                                    if((begin_time_current <= ending_time_compare && begin_time_current >= begin_time_compare )||(ending_time_current >= ending_time_compare && ending_time_current <= begin_time_compare ) || (begin_time_current >= begin_time_compare && ending_time_compare >= ending_time_current)){
+                                        numConflict++;
+                                    }
+
+
+                                }
+
+                            }
+
+                            if(numComparison == numConflict){
+                                validSchedule = false;
+                            }
+                        }// end of validSchedule for loop
+
+                        if(!validSchedule){
+                            TextView itran;
+                            itran= findViewById(R.id.sampletest);
+                            itran.setText("Courses Conflict");
+                        }
+
+
+                        // Appending lists with new classes
+                        for(int classnum = 0; classnum < iarray.length; classnum++){
+                            if (MCLlec.get(iarray[classnum]).getStart().size()!=0) {
+                                String start_time_var = MCLlec.get(iarray[classnum]).Start.get(0).trim();
+                                String end_time_var = MCLlec.get(iarray[classnum]).Stop.get(0).trim();
+
+                                start_time_list.add(start_time_var);
+                                end_time_list.add(end_time_var);
+                                class_name_list.add(MCL[iarray[classnum]].display());
+                                day_list.add(MCLlec.get(iarray[classnum]).Day.get(0));
+                            }
+
+                            if (MCLdis.get(iarray[classnum]).getStart().size()!=0|| MCLdis.get(iarray[classnum]).getStop().size()!=0) {
+                                String start_time_var = MCLdis.get(iarray[classnum]).getStart().get(0).trim();
+                                String end_time_var = MCLdis.get(iarray[classnum]).getStop().get(0).trim();
+
+                                start_time_list.add(start_time_var);
+                                end_time_list.add(end_time_var);
+                                class_name_list.add(MCL[iarray[classnum]].display());
+                                day_list.add(MCLdis.get(iarray[classnum]).Day.get(0));
+                            }
+
+                            if (MCLlab.get(iarray[classnum]).getStart().size()!=0 || MCLlab.get(iarray[classnum]).getStop().size()!=0) {
+                                String start_time_var = MCLlab.get(iarray[classnum]).getStart().get(0).trim();
+                                String end_time_var = MCLlab.get(iarray[classnum]).getStop().get(0).trim();
+
+                                start_time_list.add(start_time_var);
+                                end_time_list.add(end_time_var);
+                                class_name_list.add(MCL[iarray[classnum]].display());
+                                day_list.add(MCLlab.get(iarray[classnum]).Day.get(0));
+                            }
+
+
+
+
+                        }
+
+
+
+
+                        int n = start_time_list.size();
+                        String[] start_time_array = new String[n];
+                        String[] end_time_array = new String[n];
+                        String[] color_array = {"#ff0000", "#ffff00", "#80ff00", "#00ffff", "#0040ff", "#ff00ff", "#d966ff", "#00ffff", "#ff668c", "#fa53af", "#ff00ff", "#ff00ff", "#ff00ff", "#ff00ff"};
+                        String[] class_name_array = new String[n];
+                        String[] day_array = new String[n];
+
+                        for(int coursei = 0; coursei<n; coursei++){
+                            start_time_array[coursei] = start_time_list.get(coursei);
+                            end_time_array[coursei] = end_time_list.get(coursei);
+                            class_name_array[coursei] = class_name_list.get(coursei);
+                            day_array[coursei] = day_list.get(coursei);
+                        }
+
+                        if(validSchedule) {
+                            for (int i = 0; i < start_time_array.length; i++) {
+                                String delims = "[,]+";
+                                String[] day_string;
+                                day_string = day_array[i].split(delims);
+                                for (int j = 0; j < day_string.length; j++) {
+                                    plotClass(day_string[j], start_time_array[i], end_time_array[i], color_array[i], class_name_array[i]);
+                                }
+
+                            }
+                        }
+
+
                     }
                 });
             }
@@ -343,14 +486,14 @@ public class ScheduleDisplay extends AppCompatActivity {
         int begin_time;
         String am_string = "am";
 
-        if(end_time.contains(am_string)) {
+        if(end_time.contains(am_string)|| end_string[0].contains("12")) {
             ending_time = Integer.valueOf(end_string[0]) * 60 + Integer.valueOf(end_string[1].substring(0,2)) - 7 * 60;
         }
         else{
             ending_time = Integer.valueOf(end_string[0]) * 60 + Integer.valueOf(end_string[1].substring(0,2)) - 7 * 60 + 12*60;
         }
 
-        if(start_time.contains(am_string)) {
+        if(start_time.contains(am_string) || start_string[0].contains("12")) {
             begin_time = Integer.valueOf(start_string[0]) * 60 + Integer.valueOf(start_string[1].substring(0,2)) - 7 * 60;
         }
         else{
@@ -383,6 +526,8 @@ public class ScheduleDisplay extends AppCompatActivity {
         } else if (day.contains("Fri")) {
             fridaySchedule.addView(classnum);
         }
+
+
 
     }
 
