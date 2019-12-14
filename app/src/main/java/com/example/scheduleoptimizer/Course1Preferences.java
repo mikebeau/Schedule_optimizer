@@ -48,6 +48,7 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
         DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
         CourseNumbersEntered=getIntent().getStringArrayListExtra("NumbersEntered");
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
+        Test=getIntent().getStringArrayListExtra("C1prof");
 
         ProfList=new ArrayList<String>();
         ProfList.add("Castanon");
