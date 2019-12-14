@@ -94,7 +94,7 @@
     <string name="title_activity_selected_classes">Selected Classes</string>
     <string name="introductory">Please enter the following</string>
     <string name="semester">Semester</string>
-    <string name="college">College</string>
+    <string name="college">ENG</string>
     <string name="department">Department</string>
     <string name="hints">Spring2020</string>
     <string name="course">Course code</string>

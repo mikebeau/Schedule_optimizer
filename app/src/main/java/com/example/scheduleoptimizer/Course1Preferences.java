@@ -28,6 +28,8 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
     private int numDaysTimes;
     private ArrayList<String> ProfList;
     private ArrayList<String> DayTime;
+    private ArrayList<String> PorT;
+    private ArrayList<String> Test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +41,19 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
         ProfList=new ArrayList<String>();
         ProfList.add("Densmore");
         ProfList.add("Appleford");
-        String disp=ProfList.get(0)+ProfList.get(1);
-        Toast.makeText(getApplicationContext(),disp,Toast.LENGTH_LONG).show();
+        ProfList.add(0,"empty");
         DayTime=new ArrayList<String>();
         DayTime.add("Morning (7AM to noon)");
         DayTime.add("Afternoon (noon to 5PM)");
         DayTime.add("Evening (5PM to 10PM)");
-        numProfs=ProfList.size();
-        numDaysTimes=DayTime.size();
+        DayTime.add(0,"empty");
+        numProfs=ProfList.size()-1;
+        numDaysTimes=DayTime.size()-1;
+
+        PorT = new ArrayList<String>();
+        PorT.add("empty");
+        PorT.add("Professor");
+        PorT.add("Time");
 
         //initializing outside if statements, so that one variable can be re-used in many different contexts
         dynamicLayout = findViewById(R.id.dynamicLayout);
@@ -65,7 +72,15 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
         //Specify layout to use when choices appear
         adapterProfs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        //Creating adapter
+        ArrayAdapter adapterPorT = new ArrayAdapter(this, android.R.layout.simple_spinner_item, PorT);
+        //Specify layout to use when choices appear
+        adapterPorT.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        //Assigning adapter to PorT spinner (always there)
+        Spinner PorT=findViewById(R.id.SpinPT);
+        PorT.setOnItemSelectedListener(this);
+        PorT.setAdapter(adapterPorT);
 
         if(numDaysTimes==1) {
             //removes unnecessary TextViews and Spinners
