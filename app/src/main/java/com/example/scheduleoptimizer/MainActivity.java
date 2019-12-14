@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         openSavedSchedule.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openActivitySavedSchedules();
+                //openActivitySavedSchedules();
+                openActivityScheduleDisplay();
             }
         });
 
@@ -58,5 +59,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SavedSchedules.class);
         startActivity(intent);
     }
+
+    public void openActivityScheduleDisplay(){
+        Intent intent = new Intent(this, ScheduleDisplay.class);
+        startActivity(intent);
+    }
 }
+
+
 
