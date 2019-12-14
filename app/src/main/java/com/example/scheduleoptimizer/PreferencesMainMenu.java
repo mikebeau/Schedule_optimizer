@@ -282,7 +282,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         //ArrayList<Course.Dis> MCLdis = new ArrayList<Course.Dis>();
                         //ArrayList<Course.Lab> MCLlab = new ArrayList<Course.Lab>();
                         //ArrayList<Course.PLab> MCLplab = new ArrayList<Course.PLab>();
-                        broken2.setText("BRUHH");
+                        broken2.setText("Ready");
 
                         int k = 0;
                         for (int i = 0; i < 420; i++) {

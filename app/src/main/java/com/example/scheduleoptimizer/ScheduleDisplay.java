@@ -1,5 +1,6 @@
 package com.example.scheduleoptimizer;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ScheduleDisplay extends AppCompatActivity {
 
@@ -58,6 +60,8 @@ public class ScheduleDisplay extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Saving data Schedule", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                openActivityMain();
+
             }
         });
     }
@@ -529,6 +533,10 @@ public class ScheduleDisplay extends AppCompatActivity {
 
 
 
+    }
+    public void openActivityMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
