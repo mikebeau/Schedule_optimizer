@@ -153,7 +153,15 @@
     <string name="time9pm">9:00 pm</string>
     <string name="time10pm">10:00 pm</string>
     <string name="time11pm">11:00 pm</string>
-
-
+    <string name="C1">492</string>
+    <string name="C2">381</string>
+    <string name="C3">327</string>
+    <string name="C4">330</string>
+    <string name="C5">307</string>
+    <string name="D1">BE</string>
+    <string name="D2">EK</string>
+    <string name="D3">EC</string>
+    <string name="D4">EC</string>
+    <string name="D5">EK</string>
 
 </resources>

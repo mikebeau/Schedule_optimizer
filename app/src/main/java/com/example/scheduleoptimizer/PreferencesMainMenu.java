@@ -79,6 +79,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
         });
 
         Button editCourse1Preferences = findViewById(R.id.buttonC1);
+        editCourse1Preferences.setText(ChosenCourses.get(1));
         editCourse1Preferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

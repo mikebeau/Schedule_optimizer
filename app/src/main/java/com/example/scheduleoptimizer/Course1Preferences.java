@@ -12,25 +12,22 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Course1Preferences extends AppCompatActivity {
+public class Course1Preferences extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    RelativeLayout dynamicLayout;
-    private ArrayList<String> Pref1Prof;
-    private ArrayList<String> Pref1Times;
-    int numProfs;
-    int numDaysTimes;
-    ArrayList<String> ProfList;
-    ArrayList<String> DayList;
-    ArrayList<String> StartTimeList;
-    ArrayList<String> StopTimeList;
-    ArrayList<String> DayTime;
+    private RelativeLayout dynamicLayout;
+    private int numProfs;
+    private int numDaysTimes;
+    private ArrayList<String> ProfList;
+    private ArrayList<String> DayTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +35,38 @@ public class Course1Preferences extends AppCompatActivity {
         setContentView(R.layout.activity_course1_preferences);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Pref1Prof = getIntent().getStringArrayListExtra("C1Prof");
-        Pref1Times = getIntent().getStringArrayListExtra("C1Time");
 
+        ProfList=new ArrayList<String>();
+        ProfList.add("Densmore");
+        ProfList.add("Appleford");
+        String disp=ProfList.get(0)+ProfList.get(1);
+        Toast.makeText(getApplicationContext(),disp,Toast.LENGTH_LONG).show();
+        DayTime=new ArrayList<String>();
+        DayTime.add("Morning (7AM to noon)");
+        DayTime.add("Afternoon (noon to 5PM)");
+        DayTime.add("Evening (5PM to 10PM)");
+        numProfs=ProfList.size();
+        numDaysTimes=DayTime.size();
 
-        numDaysTimes=10;
-        numProfs=10;
         //initializing outside if statements, so that one variable can be re-used in many different contexts
         dynamicLayout = findViewById(R.id.dynamicLayout);
         TextView textView;
         RelativeLayout.LayoutParams params;
         ViewGroup.LayoutParams higherparams;
         Spinner spinnerx;
+
+        //Creating adapter
+        ArrayAdapter adapterDays = new ArrayAdapter(this, android.R.layout.simple_spinner_item, DayTime);
+        //Specify layout to use when choices appear
+        adapterDays.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //Creating adapter
+        ArrayAdapter adapterProfs = new ArrayAdapter(this, android.R.layout.simple_spinner_item, ProfList);
+        //Specify layout to use when choices appear
+        adapterProfs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+
         if(numDaysTimes==1) {
             //removes unnecessary TextViews and Spinners
             textView = findViewById(R.id.textViewDay1);
@@ -67,6 +84,18 @@ public class Course1Preferences extends AppCompatActivity {
             params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.BELOW, R.id.textViewDay);
             textView.setLayoutParams(params);
+        }
+        if (numDaysTimes>1){
+            //Assigning Spinner
+            Spinner DayChoice1=findViewById(R.id.SpinDays1);
+            //Creating spinner click listener
+            DayChoice1.setOnItemSelectedListener(this);
+            //Apply adapter to spinners
+            DayChoice1.setAdapter(adapterDays);
+            //Repeat for second spinner
+            Spinner DayChoice2=findViewById(R.id.SpinDays2);
+            DayChoice2.setOnItemSelectedListener(this);
+            DayChoice2.setAdapter(adapterDays);
         }
         if (numDaysTimes>2) {
             //re-positions TextViews to accommodate a third on the same line
@@ -105,6 +134,9 @@ public class Course1Preferences extends AppCompatActivity {
             params.addRule(RelativeLayout.RIGHT_OF, R.id.SpinDays2);
             spinnerx.setLayoutParams(params);
             spinnerx.setVisibility(View.VISIBLE);
+            Spinner DayChoice2=findViewById(R.id.SpinDays3);
+            DayChoice2.setOnItemSelectedListener(this);
+            DayChoice2.setAdapter(adapterDays);
         }
         if (numDaysTimes > 3) {
             //Adds new TextView and Spinner
@@ -282,6 +314,14 @@ public class Course1Preferences extends AppCompatActivity {
             params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.BELOW, R.id.textViewProf);
             textView.setLayoutParams(params);
+        }
+        if (numProfs>1){
+            Spinner ProfChoice1=findViewById(R.id.SpinProf1);
+            ProfChoice1.setOnItemSelectedListener(this);
+            ProfChoice1.setAdapter(adapterProfs);
+            Spinner ProfChoice2=findViewById(R.id.SpinProf2);
+            ProfChoice2.setOnItemSelectedListener(this);
+            ProfChoice2.setAdapter(adapterProfs);
         }
         if (numProfs>2) {
             //re-positions TextViews to accommodate a third on the same line
@@ -490,6 +530,21 @@ public class Course1Preferences extends AppCompatActivity {
                 }
             });
         }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        //Transfers spinner item chosen to string for later assignment
+        String SpinResult = parent.getItemAtPosition(pos).toString();
+        Toast.makeText(getApplicationContext(), "You chose a preference!", Toast.LENGTH_LONG);
+    }
+
+    public void onNothingSelected(AdapterView<?> arg0) {
+        //Action if nothing is selected here
+        String testSpinResult = "@string/noSelection";
+        Toast.makeText(arg0.getContext(), "@string/select", Toast.LENGTH_SHORT).show();
+    }
+
 
     }
 
