@@ -42,6 +42,13 @@ public class PreferencesMainMenu extends AppCompatActivity {
     private ArrayList<String> DepartmentsEntered;
     private ArrayList<String> CourseNumberEntered;
     ArrayList<String> Pref1Prof = new ArrayList<String>();
+    ArrayList<String> Pref2Prof = new ArrayList<String>();
+    ArrayList<String> Pref3Prof = new ArrayList<String>();
+    ArrayList<String> Pref4Prof = new ArrayList<String>();
+    ArrayList<String> Pref5Prof = new ArrayList<String>();
+
+
+
 
 
 
@@ -282,7 +289,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         //ArrayList<Course.Dis> MCLdis = new ArrayList<Course.Dis>();
                         //ArrayList<Course.Lab> MCLlab = new ArrayList<Course.Lab>();
                         //ArrayList<Course.PLab> MCLplab = new ArrayList<Course.PLab>();
-                        broken2.setText("BRUHH");
+                        broken2.setText("Ready");
 
                         int k = 0;
                         for (int i = 0; i < 420; i++) {
@@ -392,11 +399,21 @@ public class PreferencesMainMenu extends AppCompatActivity {
                         }*/
 
 
-                                for(int j =0; j < (MCLlec.get(iarray[0]).getProf().size());j++)
-                                {
-                                    Pref1Prof.add(MCLlec.get(iarray[0]).getProf().get(j));
-                                }
-
+                       for (int j = 0; j < (MCLlec.get(iarray[0]).getProf().size()); j++) {
+                               Pref1Prof.add(MCLlec.get(iarray[0]).getProf().get(j));
+                           }
+                        for (int j = 0; j < (MCLlec.get(iarray[1]).getProf().size()); j++) {
+                            Pref2Prof.add(MCLlec.get(iarray[1]).getProf().get(j));
+                        }
+                        for (int j = 0; j < (MCLlec.get(iarray[2]).getProf().size()); j++) {
+                            Pref3Prof.add(MCLlec.get(iarray[2]).getProf().get(j));
+                        }
+                        for (int j = 0; j < (MCLlec.get(iarray[3]).getProf().size()); j++) {
+                            Pref4Prof.add(MCLlec.get(iarray[3]).getProf().get(j));
+                        }
+                        for (int j = 0; j < (MCLlec.get(iarray[4]).getProf().size()); j++) {
+                            Pref5Prof.add(MCLlec.get(iarray[4]).getProf().get(j));
+                        }
 
                     }
                 });
