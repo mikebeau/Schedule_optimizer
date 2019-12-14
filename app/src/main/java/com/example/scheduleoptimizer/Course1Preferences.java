@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +34,7 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
     private ArrayList<String> DepartmentsEntered;
     private ArrayList<String> CourseNumbersEntered;
     private ArrayList<String> ChosenCourses;
+    private ArrayList<String> Test;
 
 
     @Override
@@ -48,10 +48,12 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
         DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
         CourseNumbersEntered=getIntent().getStringArrayListExtra("NumbersEntered");
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
+        Test=getIntent().getStringArrayListExtra("C1prof");
 
         ProfList=new ArrayList<String>();
-        ProfList.add("Densmore");
-        ProfList.add("Appleford");
+        ProfList.add("Castanon");
+        ProfList.add("Lewis");
+        ProfList.add("Nagem");
         ProfList.add(0,"empty");
         DayTime=new ArrayList<String>();
         DayTime.add("Morning (7AM to noon)");
@@ -394,6 +396,9 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
             params.addRule(RelativeLayout.RIGHT_OF, R.id.SpinProf2);
             spinnerx.setLayoutParams(params);
             spinnerx.setVisibility(View.VISIBLE);
+            Spinner ProfChoice3=findViewById(R.id.SpinProf3);
+            ProfChoice3.setOnItemSelectedListener(this);
+            ProfChoice3.setAdapter(adapterProfs);
         }
         if (numProfs > 3) {
             //Adds new TextView and Spinner
