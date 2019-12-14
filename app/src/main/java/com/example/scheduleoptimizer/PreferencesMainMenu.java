@@ -88,6 +88,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
         });
 
         Button editCourse2Preferences = findViewById(R.id.buttonC2);
+        editCourse2Preferences.setText(ChosenCourses.get(2));
         editCourse2Preferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +97,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
         });
 
         Button editCourse3Preferences = findViewById(R.id.buttonC3);
+        editCourse3Preferences.setText(ChosenCourses.get(3));
         editCourse3Preferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +106,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
         });
 
         Button editCourse4Preferences = findViewById(R.id.buttonC4);
+        editCourse4Preferences.setText(ChosenCourses.get(4));
         editCourse4Preferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +115,7 @@ public class PreferencesMainMenu extends AppCompatActivity {
         });
 
         Button editCourse5Preferences = findViewById(R.id.buttonC5);
+        editCourse5Preferences.setText(ChosenCourses.get(5));
         editCourse5Preferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,6 +138,9 @@ public class PreferencesMainMenu extends AppCompatActivity {
 
     public void openCourse1Preferences() {
         Intent intent = new Intent(this, Course1Preferences.class);
+        intent.putExtra("DepartmentsEntered", DepartmentsEntered);
+        intent.putExtra("NumbersEntered", CourseNumberEntered);
+        intent.putExtra("CourseNames",ChosenCourses);
         intent.putExtra("C1Prof",Pref1Prof);
         startActivity(intent);
     }

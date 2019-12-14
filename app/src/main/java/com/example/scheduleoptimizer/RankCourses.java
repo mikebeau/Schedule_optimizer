@@ -55,13 +55,12 @@ public class RankCourses extends AppCompatActivity implements AdapterView.OnItem
 
         //Creating list to be filled with user's ranked course choices upon spinner selection
         CourseRankings = new ArrayList<String>();
-        String empty="empty";
         for (int i=0; i<5; i++)
-        {CourseRankings.add(i,empty);}
+        {CourseRankings.add(i,"empty");}
 
         //Assigning user input to ChosenCourses
         ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
-        ChosenCourses.add(0,empty);
+        ChosenCourses.add(0,"empty");
         DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
         CourseNumberEntered=getIntent().getStringArrayListExtra("NumbersEntered");
 

@@ -1,6 +1,7 @@
 package com.example.scheduleoptimizer;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -29,7 +31,11 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
     private ArrayList<String> ProfList;
     private ArrayList<String> DayTime;
     private ArrayList<String> PorT;
-    private ArrayList<String> Test;
+    private Button InputPreferences;
+    private ArrayList<String> DepartmentsEntered;
+    private ArrayList<String> CourseNumbersEntered;
+    private ArrayList<String> ChosenCourses;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,11 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_course1_preferences);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Importing arrays so we can pass them back to PreferencesMainMenu at the end
+        DepartmentsEntered=getIntent().getStringArrayListExtra("DepartmentsEntered");
+        CourseNumbersEntered=getIntent().getStringArrayListExtra("NumbersEntered");
+        ChosenCourses=getIntent().getStringArrayListExtra("CourseNames");
 
         ProfList=new ArrayList<String>();
         ProfList.add("Densmore");
@@ -54,6 +65,14 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
         PorT.add("empty");
         PorT.add("Professor");
         PorT.add("Time");
+
+        InputPreferences = findViewById(R.id.inputButton);
+        InputPreferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPreferencesMainMenu();
+            }
+        });
 
         //initializing outside if statements, so that one variable can be re-used in many different contexts
         dynamicLayout = findViewById(R.id.dynamicLayout);
@@ -560,6 +579,13 @@ public class Course1Preferences extends AppCompatActivity implements AdapterView
         Toast.makeText(arg0.getContext(), "@string/select", Toast.LENGTH_SHORT).show();
     }
 
+    public void openPreferencesMainMenu(){
+        Intent intent = new Intent(this, PreferencesMainMenu.class);
+        intent.putExtra("DepartmentsEntered", DepartmentsEntered);
+        intent.putExtra("NumbersEntered", CourseNumbersEntered);
+        intent.putExtra("CourseNames",ChosenCourses);
+        startActivity(intent);
+    }
 
     }
 
